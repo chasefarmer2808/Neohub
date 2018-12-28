@@ -1,0 +1,17 @@
+Adafruit-Blinka==1.0.2
+adafruit-circuitpython-neopixel==3.3.4
+Adafruit-PlatformDetect==0.0.7
+Adafruit-PureIO==0.2.3
+aniso8601==4.0.1
+Click==7.0
+Flask==1.0.2
+Flask-RESTful==0.3.7
+itsdangerous==1.1.0
+Jinja2==2.10
+MarkupSafe==1.1.0
+pytz==2018.7
+rpi-ws281x==4.1.0
+RPi.GPIO==0.6.5
+six==1.12.0
+spidev==3.2
+Werkzeug==0.14.1
