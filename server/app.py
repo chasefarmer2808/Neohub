@@ -1,10 +1,12 @@
 from flask import Flask, render_template, redirect, url_for
 from flask_restful import Api
+from flask_marshmallow import Marshmallow
 
 from resources.strip import Strip
 
 app = Flask(__name__)
 api = Api(app)
+ma = Marshmallow(app)
 
 api.add_resource(Strip, '/api/strip')
 

@@ -1,10 +1,11 @@
 import board
-import neopixel
 import atexit
 
 from flask import request
-from flask_restful import Resource
+from flask_restful import Resource, marshal_with
 from flask_restful.reqparse import RequestParser
+
+from schemas.neopixel import Neopixel, NeopixelSchema
 
 strips = []
 strip_id = 0
@@ -12,36 +13,30 @@ strip_id = 0
 @atexit.register
 def detach_pixels():
     for strip in strips:
-        strip['strip'].deinit()    
+        strip.neopixel.deinit()    
 
 class Strip(Resource):
     def __init__(self):
         pass
 
-    # FIXME: Figure out how to marshal the strip list
     def get(self):
-        return strips
+        neopixel_schema = NeopixelSchema(many=True)
+        res = neopixel_schema.dump(strips)
+        return res
 
     def post(self):
         init_request_parser = RequestParser(bundle_errors=True)
         init_request_parser.add_argument('pin', type=str, required=True)
         init_request_parser.add_argument('num_pixels', type=int, required=True)
         init_request_parser.add_argument('brightness', type=str, default='0.2')
-
         args = init_request_parser.parse_args()
-        brightness = float(args['brightness'])
-
-        try:
-            pin = self.get_board_pin(args['pin'].upper())
-        except ValueError:
-            return 'Invalid Digital IO pin.', 401
 
         strip_id = len(strips)
-        # Possible improvement: neopixel strip factory
-        new_strip = {
-            'id': strip_id,
-            'strip': neopixel.NeoPixel(pin, args['num_pixels'], brightness=brightness)
-        }
+        new_strip = Neopixel(strip_id, 
+                            'strip',
+                            args['pin'],
+                            args['num_pixels'],
+                            args['brightness'])
 
         strips.append(new_strip)
         strip_id += 1
