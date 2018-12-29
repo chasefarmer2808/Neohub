@@ -10,11 +10,6 @@ from schemas.neopixel import Neopixel, NeopixelSchema
 strips = []
 strip_id = 0
 
-@atexit.register
-def detach_pixels():
-    for strip in strips:
-        strip.neopixel.deinit()    
-
 class Strip(Resource):
     def __init__(self):
         pass
@@ -25,6 +20,7 @@ class Strip(Resource):
         return res
 
     def post(self):
+        global strips
         init_request_parser = RequestParser(bundle_errors=True)
         init_request_parser.add_argument('pin', type=str, required=True)
         init_request_parser.add_argument('num_pixels', type=int, required=True)
@@ -51,19 +47,25 @@ class Strip(Resource):
         set_pixel_parser.add_argument('g', type=int, required=True)
         set_pixel_parser.add_argument('b', type=int, required=True)
         args = set_pixel_parser.parse_args()
-        
-        strip = strips[args['id']]['strip']
 
-        try:
-            strip[args['index']] = (args['r'], args['g'], args['b'])
-            strip.show()
-        except IndexError:
-            return 'Pixel index out of range.', 400
+        new_color = (args['r'], args['g'], args['b'])
+        
+        neopixel = strips[args['id']]
+        neopixel.pixels[args['index']].color = new_color # Index out of range error will happen here.
+        neopixel.show_colors()
 
         return
 
-    def get_board_pin(self, pin_str):
-        if pin_str == 'D18':
-            return board.D18
-        else:
-            raise ValueError
+    def delete(self):
+        global strips
+
+        delete_strip_parser = RequestParser(bundle_errors=True)
+        delete_strip_parser.add_argument('id', type=int, required=True)
+        args = delete_strip_parser.parse_args()
+
+        strip_id = args['id']
+
+        strips[strip_id].__del__()
+        strips.remove(strips[strip_id])
+
+        return

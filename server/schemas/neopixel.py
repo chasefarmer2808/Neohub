@@ -16,12 +16,23 @@ class Neopixel(object):
 
         for i in range(0, num_pixels):
             self.pixels.append(Pixel(i, (0, 0, 0)))
+            self.neopixel[i] = (0, 0, 0)
+
+    def __del__(self):
+        print('here')
+        self.neopixel.deinit()
 
     def get_gpio_pin(self):
         if self.pin == '18':
             return board.D18
         else:
             raise ValueError
+
+    def show_colors(self):
+        for i in range(0, len(self.pixels)):
+            self.neopixel[i] = self.pixels[i].color
+        
+        self.neopixel.show()
 
 class NeopixelSchema(Schema):
     id = fields.Integer()
