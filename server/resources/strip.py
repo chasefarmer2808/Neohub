@@ -5,7 +5,7 @@ from flask import request
 from flask_restful import Resource, marshal_with
 from flask_restful.reqparse import RequestParser
 
-from schemas.neopixel import Neopixel, NeopixelSchema
+from schemas.neopixel import Neopixel, NeopixelSchema, GREEN
 
 strips = []
 strip_id = 0
@@ -36,8 +36,11 @@ class Strip(Resource):
 
         strips.append(new_strip)
         strip_id += 1
+        
+        for i in range(0, 3):
+            new_strip.fill_blink(GREEN, 0.15)
 
-        return
+        return 200
 
     def put(self):
         set_pixel_parser = RequestParser(bundle_errors=True)
@@ -54,7 +57,7 @@ class Strip(Resource):
         neopixel.pixels[args['index']].color = new_color # Index out of range error will happen here.
         neopixel.show_colors()
 
-        return
+        return 200
 
     def delete(self):
         global strips
@@ -68,4 +71,4 @@ class Strip(Resource):
         strips[strip_id].__del__()
         strips.remove(strips[strip_id])
 
-        return
+        return 200
