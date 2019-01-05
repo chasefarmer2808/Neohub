@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+
+import { AddNeopixelDialogComponent } from './add-neopixel-dialog/add-neopixel-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private addNeopixelDialog: MatDialog) { }
 
   ngOnInit() {
+  }
+
+  openAddNeopixelDialog() {
+    this.addNeopixelDialog.open(AddNeopixelDialogComponent);
   }
 
 }
