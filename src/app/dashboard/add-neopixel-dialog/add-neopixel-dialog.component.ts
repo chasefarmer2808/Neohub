@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-add-neopixel-dialog',
@@ -8,7 +8,8 @@ import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class AddNeopixelDialogComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<AddNeopixelDialogComponent>) { }
+  constructor(public dialogRef: MatDialogRef<AddNeopixelDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
   }
