@@ -10,7 +10,7 @@ ma = Marshmallow(app)
 
 api.add_resource(Strip, '/api/strip')
 
-@app.route('/home')
+@app.route('/')
 def home():
     return render_template('index.html')
 
