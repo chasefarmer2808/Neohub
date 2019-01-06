@@ -1,6 +1,14 @@
 <div class="dialog-container">
   <h1 mat-dialog-title>Add a Neopixel!</h1>
-  <div mat-dialog-content>
-    <p>Dialog works!</p>
+  <div class="form-container" mat-dialog-content>
+    <form [formGroup]="addNeopixelForm" novalidate>
+      <div class="form-input-container">
+        <mat-form-field>
+          <mat-select placeholder="Type..." formControlName="pixelType" required>
+            <mat-option *ngFor="let type of pixelTypeOptions" value="{{type}}">{{type}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
   </div>
 </div>
