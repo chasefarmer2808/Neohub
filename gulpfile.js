@@ -8,12 +8,12 @@ function copyBuildJS() {
 
 function copyBuildHTML() {
     return src('dist/neohub/index.html')
-        .pipe(replace('favicon.ico', 'static/favicon.ico'))
-        .pipe(replace('runtime.js', 'static/runtime.js'))
-        .pipe(replace('polyfills.js', 'static/polyfills.js'))
-        .pipe(replace('styles.js', 'static/styles.js'))
-        .pipe(replace('vendor.js', 'static/vendor.js'))
-        .pipe(replace('main.js', 'static/main.js'))
+        // .pipe(replace('favicon.ico', 'static/favicon.ico'))
+        // .pipe(replace('runtime.js', 'static/runtime.js'))
+        // .pipe(replace('polyfills.js', 'static/polyfills.js'))
+        // .pipe(replace('styles.js', 'static/styles.js'))
+        // .pipe(replace('vendor.js', 'static/vendor.js'))
+        // .pipe(replace('main.js', 'static/main.js'))
         .pipe(dest('server/templates'));
 }
 
