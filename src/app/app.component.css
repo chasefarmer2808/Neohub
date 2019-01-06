@@ -1,5 +1,5 @@
 #app-container {
-    background-image: url("../assets/images/adafruit.png");
+    background-image: url("server/static/adafruit.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
