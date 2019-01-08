@@ -1,7 +1,7 @@
 <div class="dialog-container">
   <h1 mat-dialog-title>Add a Neopixel!</h1>
   <div class="form-container" mat-dialog-content>
-    <form [formGroup]="addNeopixelForm" novalidate>
+    <form [formGroup]="addNeopixelForm" (ngSubmit)="addNeopixel()" novalidate>
       <div class="form-input-container">
         <mat-form-field>
           <mat-select placeholder="Type" formControlName="pixelType" required>
@@ -22,7 +22,7 @@
         </mat-select>
       </mat-form-field>
       <div class="action-container">
-        <button class="submit-button" mat-raised-button color="primary" [disabled]="addNeopixelForm.invalid">Go!</button>
+        <button type="submit" class="submit-button" mat-raised-button color="primary" [disabled]="addNeopixelForm.invalid">Go!</button>
       </div>
     </form>
   </div>

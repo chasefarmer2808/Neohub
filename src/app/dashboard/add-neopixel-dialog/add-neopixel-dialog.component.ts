@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
+
 @Component({
   selector: 'app-add-neopixel-dialog',
   templateUrl: './add-neopixel-dialog.component.html',
@@ -13,7 +15,9 @@ export class AddNeopixelDialogComponent implements OnInit {
   pixelTypeOptions: Array<string> = ['Strip', 'Ring', 'Matrix'];
   gpioPinOptions: Array<string> = ['10', '12', '18', '21'];
 
-  constructor(public dialogRef: MatDialogRef<AddNeopixelDialogComponent>,
+  constructor(
+    public dialogRef: MatDialogRef<AddNeopixelDialogComponent>,
+    private neoPixelService: NeopixelService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
@@ -26,6 +30,14 @@ export class AddNeopixelDialogComponent implements OnInit {
       numPixels: new FormControl(64, [Validators.required, Validators.min(1)]),
       gpioPin: new FormControl(this.gpioPinOptions[2], [Validators.required]) // GPIO 18 is standard per the Circuit Python docs.
     });
+  }
+
+  addNeopixel() {
+    console.log(this.addNeopixelForm.value);
+    this.neoPixelService.createNeopixel(this.addNeopixelForm.value)
+      .subscribe((data: any) => {
+        console.log(data);
+      });
   }
 
 }
