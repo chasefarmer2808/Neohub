@@ -70,7 +70,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#app-container {\n    background-image: url('static/adafruit.png');\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n    background-position: center;\n    background-color: #00a7e9;\n    width: 100vw;\n    height: 100vh;\n}\n\n.full-container {\n    width: 100vw;\n    height: 100vh;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSw2Q0FBMEQ7SUFDMUQsNkJBQTZCO0lBQzdCLDZCQUE2QjtJQUM3Qiw0QkFBNEI7SUFDNUIsMEJBQTBCO0lBQzFCLGFBQWE7SUFDYixjQUFjO0NBQ2pCOztBQUVEO0lBQ0ksYUFBYTtJQUNiLGNBQWM7Q0FDakIiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIiNhcHAtY29udGFpbmVyIHtcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuLi8uLi9zZXJ2ZXIvc3RhdGljL2FkYWZydWl0LnBuZ1wiKTtcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICAgIGJhY2tncm91bmQtYXR0YWNobWVudDogZml4ZWQ7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xuICAgIGJhY2tncm91bmQtY29sb3I6ICMwMGE3ZTk7XG4gICAgd2lkdGg6IDEwMHZ3O1xuICAgIGhlaWdodDogMTAwdmg7XG59XG5cbi5mdWxsLWNvbnRhaW5lciB7XG4gICAgd2lkdGg6IDEwMHZ3O1xuICAgIGhlaWdodDogMTAwdmg7XG59XG5cbiJdfQ== */"
+module.exports = "#app-container {\n    background-image: url('static/adafruit.png');\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n    background-position: center;\n    background-color: #00a7e9;\n    width: 100vw;\n    height: 100vh;\n}\n\n.full-container {\n    width: 100vw;\n    height: 100vh;\n}\n\n.action-container {\n    display: flex;\n    justify-content: center;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSw2Q0FBMEQ7SUFDMUQsNkJBQTZCO0lBQzdCLDZCQUE2QjtJQUM3Qiw0QkFBNEI7SUFDNUIsMEJBQTBCO0lBQzFCLGFBQWE7SUFDYixjQUFjO0NBQ2pCOztBQUVEO0lBQ0ksYUFBYTtJQUNiLGNBQWM7Q0FDakI7O0FBRUQ7SUFDSSxjQUFjO0lBQ2Qsd0JBQXdCO0NBQzNCIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjYXBwLWNvbnRhaW5lciB7XG4gICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiLi4vLi4vc2VydmVyL3N0YXRpYy9hZGFmcnVpdC5wbmdcIik7XG4gICAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcbiAgICBiYWNrZ3JvdW5kLWF0dGFjaG1lbnQ6IGZpeGVkO1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDBhN2U5O1xuICAgIHdpZHRoOiAxMDB2dztcbiAgICBoZWlnaHQ6IDEwMHZoO1xufVxuXG4uZnVsbC1jb250YWluZXIge1xuICAgIHdpZHRoOiAxMDB2dztcbiAgICBoZWlnaHQ6IDEwMHZoO1xufVxuXG4uYWN0aW9uLWNvbnRhaW5lciB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cblxuIl19 */"
 
 /***/ }),
 
@@ -131,11 +131,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
-/* harmony import */ var _dashboard_add_neopixel_dialog_add_neopixel_dialog_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dashboard/add-neopixel-dialog/add-neopixel-dialog.component */ "./src/app/dashboard/add-neopixel-dialog/add-neopixel-dialog.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
+/* harmony import */ var _dashboard_add_neopixel_dialog_add_neopixel_dialog_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dashboard/add-neopixel-dialog/add-neopixel-dialog.component */ "./src/app/dashboard/add-neopixel-dialog/add-neopixel-dialog.component.ts");
+
 
 
 
@@ -151,23 +153,29 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
-                _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_7__["DashboardComponent"],
-                _dashboard_add_neopixel_dialog_add_neopixel_dialog_component__WEBPACK_IMPORTED_MODULE_8__["AddNeopixelDialogComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
+                _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_8__["DashboardComponent"],
+                _dashboard_add_neopixel_dialog_add_neopixel_dialog_component__WEBPACK_IMPORTED_MODULE_9__["AddNeopixelDialogComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatButtonModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatIconModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialogModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatIconModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatFormFieldModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSelectModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatOptionModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatInputModule"]
             ],
             entryComponents: [
-                _dashboard_add_neopixel_dialog_add_neopixel_dialog_component__WEBPACK_IMPORTED_MODULE_8__["AddNeopixelDialogComponent"]
+                _dashboard_add_neopixel_dialog_add_neopixel_dialog_component__WEBPACK_IMPORTED_MODULE_9__["AddNeopixelDialogComponent"]
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -195,7 +203,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"dialog-container\">\n  <h1 mat-dialog-title>Add a Neopixel!</h1>\n  <div mat-dialog-content>\n    <p>Dialog works!</p>\n  </div>\n</div>\n"
+module.exports = "<div class=\"dialog-container\">\n  <h1 mat-dialog-title>Add a Neopixel!</h1>\n  <div class=\"form-container\" mat-dialog-content>\n    <form [formGroup]=\"addNeopixelForm\" novalidate>\n      <div class=\"form-input-container\">\n        <mat-form-field>\n          <mat-select placeholder=\"Type\" formControlName=\"pixelType\" required>\n            <mat-option *ngFor=\"let type of pixelTypeOptions\" value=\"{{type}}\">{{type}}</mat-option>\n          </mat-select>\n        </mat-form-field>\n      </div>\n      <div class=\"form-input-container\">\n        <mat-form-field>\n          <input type=\"text\" placeholder=\"Number of pixels\" matInput formControlName=\"numPixels\" required>\n          <mat-error *ngIf=\"addNeopixelForm.controls['numPixels'].hasError('required')\">This field is required.</mat-error>\n          <mat-error *ngIf=\"addNeopixelForm.controls['numPixels'].hasError('min')\">Must have at least 1 pixel.</mat-error>\n        </mat-form-field>\n      </div>\n      <mat-form-field>\n        <mat-select placeholder=\"GPIO Pin\" formControlName=\"gpioPin\" required>\n          <mat-option *ngFor=\"let pin of gpioPinOptions\" value=\"{{pin}}\">{{pin}}</mat-option>\n        </mat-select>\n      </mat-form-field>\n      <div class=\"action-container\">\n        <button class=\"submit-button\" mat-raised-button color=\"primary\" [disabled]=\"addNeopixelForm.invalid\">Go!</button>\n      </div>\n    </form>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -212,6 +220,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
 
 
 
@@ -219,14 +229,24 @@ var AddNeopixelDialogComponent = /** @class */ (function () {
     function AddNeopixelDialogComponent(dialogRef, data) {
         this.dialogRef = dialogRef;
         this.data = data;
+        this.pixelTypeOptions = ['Strip', 'Ring', 'Matrix'];
+        this.gpioPinOptions = ['10', '12', '18', '21'];
     }
     AddNeopixelDialogComponent.prototype.ngOnInit = function () {
+        this.createAddNeopixelForm();
+    };
+    AddNeopixelDialogComponent.prototype.createAddNeopixelForm = function () {
+        this.addNeopixelForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({
+            pixelType: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.pixelTypeOptions[0], [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            numPixels: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](64, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].min(1)]),
+            gpioPin: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.gpioPinOptions[2], [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]) // GPIO 18 is standard per the Circuit Python docs.
+        });
     };
     AddNeopixelDialogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-add-neopixel-dialog',
             template: __webpack_require__(/*! ./add-neopixel-dialog.component.html */ "./src/app/dashboard/add-neopixel-dialog/add-neopixel-dialog.component.html"),
-            styles: [__webpack_require__(/*! ./add-neopixel-dialog.component.css */ "./src/app/dashboard/add-neopixel-dialog/add-neopixel-dialog.component.css")]
+            styles: [__webpack_require__(/*! ./add-neopixel-dialog.component.css */ "./src/app/dashboard/add-neopixel-dialog/add-neopixel-dialog.component.css"), __webpack_require__(/*! ../../app.component.css */ "./src/app/app.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"])),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"], Object])

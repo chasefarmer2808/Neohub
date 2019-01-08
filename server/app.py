@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, url_for
+from flask_cors import CORS
 from flask_restful import Api
 from flask_marshmallow import Marshmallow
 
@@ -9,6 +10,8 @@ api = Api(app)
 ma = Marshmallow(app)
 
 api.add_resource(Strip, '/api/strip')
+
+cors = CORS(app, resources={r'/api/*': {'origins': '*'}})
 
 @app.route('/')
 def home():
