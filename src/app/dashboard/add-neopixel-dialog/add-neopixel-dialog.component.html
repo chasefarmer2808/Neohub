@@ -4,10 +4,25 @@
     <form [formGroup]="addNeopixelForm" novalidate>
       <div class="form-input-container">
         <mat-form-field>
-          <mat-select placeholder="Type..." formControlName="pixelType" required>
+          <mat-select placeholder="Type" formControlName="pixelType" required>
             <mat-option *ngFor="let type of pixelTypeOptions" value="{{type}}">{{type}}</mat-option>
           </mat-select>
         </mat-form-field>
+      </div>
+      <div class="form-input-container">
+        <mat-form-field>
+          <input type="text" placeholder="Number of pixels" matInput formControlName="numPixels" required>
+          <mat-error *ngIf="addNeopixelForm.controls['numPixels'].hasError('required')">This field is required.</mat-error>
+          <mat-error *ngIf="addNeopixelForm.controls['numPixels'].hasError('min')">Must have at least 1 pixel.</mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <mat-select placeholder="GPIO Pin" formControlName="gpioPin" required>
+          <mat-option *ngFor="let pin of gpioPinOptions" value="{{pin}}">{{pin}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="action-container">
+        <button class="submit-button" mat-raised-button color="primary" [disabled]="addNeopixelForm.invalid">Go!</button>
       </div>
     </form>
   </div>
