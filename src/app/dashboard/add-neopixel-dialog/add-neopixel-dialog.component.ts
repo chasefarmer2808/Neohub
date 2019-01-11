@@ -33,11 +33,15 @@ export class AddNeopixelDialogComponent implements OnInit {
   }
 
   addNeopixel() {
-    console.log(this.addNeopixelForm.value);
     this.neoPixelService.createNeopixel(this.addNeopixelForm.value)
-      .subscribe((data: any) => {
-        console.log(data);
-      });
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+          this.dialogRef.close();
+        },
+        (err: any) => {
+          console.error('Error adding neopixel: ', err);
+        });
   }
 
 }

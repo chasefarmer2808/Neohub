@@ -12,9 +12,12 @@ import { MatButtonModule,
          MatInputModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddNeopixelDialogComponent } from './dashboard/add-neopixel-dialog/add-neopixel-dialog.component';
+
+import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,9 @@ import { AddNeopixelDialogComponent } from './dashboard/add-neopixel-dialog/add-
   entryComponents: [
     AddNeopixelDialogComponent
   ],
-  providers: [],
+  providers: [
+    NeopixelService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

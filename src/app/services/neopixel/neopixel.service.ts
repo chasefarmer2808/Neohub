@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { Neopixel } from './neopixel';
@@ -20,7 +20,15 @@ export class NeopixelService {
       )
   }
 
+  getNeopixels(): Observable<Neopixel[]> {
+    return this.http
+      .get<Neopixel[]>('http://192.168.0.106:5000/api/strip')
+      .pipe(
+        catchError(this.handleObservableError)
+      )
+  }
+
   private handleObservableError(error: HttpErrorResponse) {
-    return Observable.throw(error.message);
+    return throwError(error.message);
   }
 }
