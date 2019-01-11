@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
     this.neopixelDataSource.connect().subscribe(
       (neopixels) => {
         this.neopixels = neopixels;
+        console.log(this.neopixels)
       }
     )
     this.neopixelDataSource.loadNeopixels();

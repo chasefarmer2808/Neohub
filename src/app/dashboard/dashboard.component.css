@@ -5,3 +5,15 @@
     right: 24px;
     bottom: 24px;
 }
+
+#neopixels-container {
+    padding: 24px;
+}
+
+#neopixel-card {
+    margin-bottom: 24px;
+}
+
+#pixel-container {
+    margin: 8px;
+}
