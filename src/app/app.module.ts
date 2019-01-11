@@ -11,12 +11,14 @@ import { MatButtonModule,
          MatOptionModule,
          MatInputModule,
          MatCardModule } from '@angular/material';
+import { ColorPickerModule } from 'src/app/modules/color-picker/color-picker.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddNeopixelDialogComponent } from './dashboard/add-neopixel-dialog/add-neopixel-dialog.component';
+import { PixelColorDialogComponent } from './dashboard/pixel-color-dialog/pixel-color-dialog.component';
 
 import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
 
@@ -24,7 +26,8 @@ import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
   declarations: [
     AppComponent,
     DashboardComponent,
-    AddNeopixelDialogComponent
+    AddNeopixelDialogComponent,
+    PixelColorDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +43,12 @@ import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
     MatSelectModule,
     MatOptionModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    ColorPickerModule
   ],
   entryComponents: [
-    AddNeopixelDialogComponent
+    AddNeopixelDialogComponent,
+    PixelColorDialogComponent
   ],
   providers: [
     NeopixelService
