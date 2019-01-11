@@ -9,7 +9,8 @@ import { MatButtonModule,
          MatFormFieldModule, 
          MatSelectModule,
          MatOptionModule,
-         MatInputModule } from '@angular/material';
+         MatInputModule,
+         MatCardModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -38,7 +39,8 @@ import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
     ReactiveFormsModule,
     MatSelectModule,
     MatOptionModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   entryComponents: [
     AddNeopixelDialogComponent

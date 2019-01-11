@@ -1,4 +1,11 @@
 <div class="component-container full-container">
+  <div class="items-container" id="neopixels-container">
+    <mat-card class="card-container" *ngFor="let neopixel of neopixels">
+      <mat-card-header>
+        {{neopixel.id}}
+      </mat-card-header>
+    </mat-card>
+  </div>
   <button (click)="openAddNeopixelDialog()" id="add-button" mat-fab color="primary">
     <mat-icon>add</mat-icon>
   </button>

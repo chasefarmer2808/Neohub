@@ -5,6 +5,8 @@ import { AddNeopixelDialogComponent } from './add-neopixel-dialog/add-neopixel-d
 
 import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
 
+import { NeopixelDataSource } from 'src/app/services/neopixel/neopixel-data-source';
+
 import { Neopixel } from 'src/app/services/neopixel/neopixel';
 
 @Component({
@@ -14,17 +16,19 @@ import { Neopixel } from 'src/app/services/neopixel/neopixel';
 })
 export class DashboardComponent implements OnInit {
 
+  neopixels: Neopixel[];
+  neopixelDataSource: NeopixelDataSource;
+
   constructor(private addNeopixelDialog: MatDialog, private neopixelService: NeopixelService) { }
 
   ngOnInit() {
-    this.neopixelService.getNeopixels().subscribe(
-      (neopixels: Neopixel[]) => {
-        console.log(neopixels);
-      },
-      (err) => {
-        console.error(err);
+    this.neopixelDataSource = new NeopixelDataSource(this.neopixelService);
+    this.neopixelDataSource.connect().subscribe(
+      (neopixels) => {
+        this.neopixels = neopixels;
       }
     )
+    this.neopixelDataSource.loadNeopixels();
   }
 
   openAddNeopixelDialog() {
@@ -32,14 +36,7 @@ export class DashboardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       (data: any) => {
-        this.neopixelService.getNeopixels().subscribe(
-          (neopixels: Neopixel[]) => {
-            console.log(neopixels);
-          },
-          (err) => {
-            console.error(err);
-          }
-        )
+        this.neopixelDataSource.loadNeopixels();
       }
     )
   }
