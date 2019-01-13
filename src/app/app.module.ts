@@ -11,7 +11,8 @@ import { MatButtonModule,
          MatOptionModule,
          MatInputModule,
          MatCardModule } from '@angular/material';
-import { ColorPickerModule } from 'src/app/modules/color-picker/color-picker.module';
+// import { ColorPickerModule } from 'src/app/modules/color-picker/color-picker.module';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 import { AppRoutingModule } from './app-routing.module';
 

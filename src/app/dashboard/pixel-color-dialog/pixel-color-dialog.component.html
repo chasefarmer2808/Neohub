@@ -1,3 +1,7 @@
 <div class="dialog-container" id="color-picker-container">
-  <app-color-picker></app-color-picker>
+  <span [style.background]="color"
+      [cpToggle]="true"
+      [cpDialogDisplay]="'inline'"
+      [cpCancelButton]="true"
+      [(colorPicker)]="color"></span>
 </div>

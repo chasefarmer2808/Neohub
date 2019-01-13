@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PixelColorDialogComponent implements OnInit {
 
+  color = '#FF0000';
+
   constructor() { }
 
   ngOnInit() {
