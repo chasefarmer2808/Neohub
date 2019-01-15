@@ -512,8 +512,8 @@ var NeopixelService = /** @class */ (function () {
     };
     NeopixelService.prototype.getNeopixels = function () {
         return this.http
-            //.get<Neopixel[]>('http://192.168.0.106:5000/api/strip')
-            .get('assets/data/data.json')
+            .get('http://192.168.0.106:5000/api/strip')
+            // .get<Neopixel[]>('assets/data/data.json')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleObservableError));
     };
     NeopixelService.prototype.handleObservableError = function (error) {
