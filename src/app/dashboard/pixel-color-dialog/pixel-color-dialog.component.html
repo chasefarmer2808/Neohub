@@ -2,6 +2,10 @@
   <span [style.background]="color"
       [cpToggle]="true"
       [cpDialogDisplay]="'inline'"
+      [cpOKButton]="true"
       [cpCancelButton]="true"
-      [(colorPicker)]="color"></span>
+      [cpAlphaChannel]="'disabled'"
+      [cpOutputFormat]="'rgba'"
+      [(colorPicker)]="color"
+      (colorPickerSelect)="updatePixel($event)"></span>
 </div>

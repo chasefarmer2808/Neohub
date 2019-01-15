@@ -1,13 +1,13 @@
 <div class="component-container full-container">
   <div class="items-container" id="neopixels-container">
-    <mat-card class="card-container" id="neopixel-card" *ngFor="let neopixel of neopixels">
+    <mat-card class="card-container" id="neopixel-card" *ngFor="let neopixel of neopixels; let id = index">
       <mat-card-header>
         {{neopixel.id}}
       </mat-card-header>
       <mat-card-content>
         <div class="items-container items-container-row">
-          <div id="pixel-container" *ngFor="let pixel of neopixel.pixels">
-            <button (click)="openPixelColorDialog()" id="pixel" mat-fab>
+          <div id="pixel-container" *ngFor="let pixel of neopixel.pixels; let index = index">
+            <button (click)="openPixelColorDialog(id, index)" id="pixel" mat-fab>
               <mat-icon>color_lens</mat-icon>
             </button>
             <!-- <input [(colorPicker)]="color" [style.background]="color"/> -->

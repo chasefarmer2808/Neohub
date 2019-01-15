@@ -1,4 +1,4 @@
 export class Pixel {
-    index: Number;
-    color: Number[];
+    index: number;
+    color: string[];
 }
