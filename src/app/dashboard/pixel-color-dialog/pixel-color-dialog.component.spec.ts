@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { HttpClientModule } from '@angular/common/http';
 
 import { PixelColorDialogComponent } from './pixel-color-dialog.component';
+import { MaterialModule } from 'src/app/modules/material/material.module';
+import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 describe('PixelColorDialogComponent', () => {
   let component: PixelColorDialogComponent;
@@ -8,7 +13,23 @@ describe('PixelColorDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PixelColorDialogComponent ]
+      declarations: [ PixelColorDialogComponent ],
+      providers: [ 
+        NeopixelService,
+        {
+          provide: MatDialogRef,
+          useValue: {}
+        },
+        {
+          provide: MAT_DIALOG_DATA, 
+          useValue: {}
+        }
+      ],
+      imports: [
+        ColorPickerModule,
+        HttpClientModule,
+        MaterialModule
+      ]
     })
     .compileComponents();
   }));
