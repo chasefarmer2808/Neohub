@@ -1,7 +1,5 @@
 import board
-import atexit
 
-from flask import request
 from flask_restful import Resource, marshal_with
 from flask_restful.reqparse import RequestParser
 
@@ -9,6 +7,7 @@ from schemas.neopixel import Neopixel, NeopixelSchema, GREEN
 
 strips = []
 strip_id = 0
+
 
 class Strip(Resource):
     def __init__(self):
