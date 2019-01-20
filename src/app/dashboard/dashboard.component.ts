@@ -46,14 +46,26 @@ export class DashboardComponent implements OnInit {
     )
   }
 
-  openPixelColorDialog(neoPixelId: number, pixelIndex: number) {
+  openPixelColorDialog(neopixelId: number, pixelIndex: number) {
     const dialogRef = this.pixelColorDialog.open(PixelColorDialogComponent,
       { 
         data: {
-          neoPixelId: neoPixelId,
+          neoPixelId: neopixelId,
           pixelIndex: pixelIndex
         }
       });
+  }
+
+  deleteNeopixel(neopixelId: number) {
+    this.neopixelService.deleteNeopixel(neopixelId).subscribe(
+      (data) => {
+        console.log(data);
+        this.neopixelDataSource.loadNeopixels();
+      },
+      (err) => {
+        console.error(err);
+      }
+    )
   }
 
 }
