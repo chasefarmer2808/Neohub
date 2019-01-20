@@ -24,9 +24,6 @@ class Neopixel(object):
             self.pixels.append(Pixel(i, (0, 0, 0)))
             self.neopixel[i] = (0, 0, 0)
 
-    def __del__(self):
-        self.neopixel.deinit()
-
     def get_gpio_pin(self):
         if self.pin == '18':
             return board.D18
@@ -36,6 +33,10 @@ class Neopixel(object):
     def show_colors(self):
         for i in range(0, len(self.pixels)):
             self.neopixel[i] = self.pixels[i].color
+
+    def updateAllPixels(self, color):
+        for i in range(0, self.num_pixels):
+            self.pixels[i].color = color
 
     def fill_blink(self, color, delay):
         self.neopixel.fill(color)

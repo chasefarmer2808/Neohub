@@ -3,7 +3,7 @@ import board
 from flask_restful import Resource, marshal_with
 from flask_restful.reqparse import RequestParser
 
-from schemas.neopixel import Neopixel, NeopixelSchema, GREEN
+from schemas.neopixel import Neopixel, NeopixelSchema, GREEN, BLACK
 
 strips = []
 strip_id = 0
@@ -20,20 +20,21 @@ class Strip(Resource):
 
     def post(self):
         global strips
+        global strip_id
         init_request_parser = RequestParser(bundle_errors=True)
         init_request_parser.add_argument('pin', type=str, required=True)
         init_request_parser.add_argument('num_pixels', type=int, required=True)
         init_request_parser.add_argument('brightness', type=str, default='0.2')
         args = init_request_parser.parse_args()
 
-        strip_id = len(strips)
         new_strip = Neopixel(strip_id, 
                             'strip',
                             args['pin'],
                             args['num_pixels'],
                             args['brightness'])
-
+        print(strips)
         strips.append(new_strip)
+        print(strips)
         strip_id += 1
         
         for i in range(0, 3):
@@ -44,7 +45,8 @@ class Strip(Resource):
     def put(self):
         set_pixel_parser = RequestParser(bundle_errors=True)
         set_pixel_parser.add_argument('id', type=int, required=True)
-        set_pixel_parser.add_argument('index', type=int, required=True)
+        set_pixel_parser.add_argument('index_start', type=int, required=True)
+        set_pixel_parser.add_argument('index_end', type=int, required=True)
         set_pixel_parser.add_argument('r', type=int, required=True)
         set_pixel_parser.add_argument('g', type=int, required=True)
         set_pixel_parser.add_argument('b', type=int, required=True)
@@ -53,8 +55,10 @@ class Strip(Resource):
         new_color = (args['r'], args['g'], args['b'])
         
         neopixel = strips[args['id']]
-        neopixel.pixels[args['index']].color = new_color # Index out of range error will happen here.
-        neopixel.show_colors()
+
+        for i in range(args['index_start'], args['index_end'] + 1):
+            neopixel.pixels[i].color = new_color # Index out of range error can happen here until index vals are checked.
+            neopixel.show_colors()
 
         return 200
 
@@ -67,7 +71,11 @@ class Strip(Resource):
 
         strip_id = args['id']
 
-        strips[strip_id].__del__()
-        strips.remove(strips[strip_id])
+        selected_neopixel = [pixel for pixel in strips if pixel.id == strip_id]
 
-        return 200
+        if len(selected_neopixel):
+            selected_neopixel[0].updateAllPixels(BLACK)
+            selected_neopixel[0].neopixel.fill(BLACK)
+            return 200
+        
+        return 404
