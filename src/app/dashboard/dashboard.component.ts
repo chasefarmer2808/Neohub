@@ -56,8 +56,8 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  deleteNeopixel(neopixelId: number) {
-    this.neopixelService.deleteNeopixel(neopixelId).subscribe(
+  clearNeopixel(neopixelId: number) {
+    this.neopixelService.clearNeopixel(neopixelId).subscribe(
       (data) => {
         console.log(data);
         this.neopixelDataSource.loadNeopixels();

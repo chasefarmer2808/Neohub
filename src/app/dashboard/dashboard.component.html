@@ -4,8 +4,8 @@
       <mat-card-header id="neopixel-card-header">
         <mat-card-title>{{neopixel.id}}</mat-card-title>
         <div id="neopixel-actions">
-          <button class="close-button" (click)="deleteNeopixel(neopixel.id)" mat-icon-button>
-            <mat-icon>close</mat-icon>
+          <button id="clear-button" (click)="clearNeopixel(neopixel.id)" mat-raised-button color="primary">
+            Clear
           </button>
         </div>
       </mat-card-header>

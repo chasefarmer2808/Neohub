@@ -32,13 +32,13 @@ export class NeopixelService {
 
   updatePixel(pixel: Pixel): Observable<any> {
     return this.http
-      .put<any>(`http://192.168.0.106:5000/api/strip?id=${pixel.neopixelId}&index=${pixel.index}&r=${pixel.color[0]}&g=${pixel.color[1]}&b=${pixel.color[2]}`, {})
+      .put<any>(`http://192.168.0.106:5000/api/strip?id=${pixel.neopixelId}&index_start=${pixel.index}&index_end=${pixel.index}&r=${pixel.color[0]}&g=${pixel.color[1]}&b=${pixel.color[2]}`, {})
       .pipe(
         catchError(this.handleObservableError)
       );
   }
 
-  deleteNeopixel(neopixelId: Number): Observable<any> {
+  clearNeopixel(neopixelId: Number): Observable<any> {
     return this.http
       .delete<any>(`http://192.168.0.106:5000/api/strip?id=${neopixelId}`)
       .pipe(
