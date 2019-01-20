@@ -211,7 +211,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"dialog-container\">\n  <h1 mat-dialog-title>Add a Neopixel!</h1>\n  <div class=\"form-container\" mat-dialog-content>\n    <form [formGroup]=\"addNeopixelForm\" (ngSubmit)=\"addNeopixel()\" novalidate>\n      <div class=\"form-input-container\">\n        <mat-form-field>\n          <mat-select placeholder=\"Type\" formControlName=\"pixelType\" required>\n            <mat-option *ngFor=\"let type of pixelTypeOptions\" value=\"{{type}}\">{{type}}</mat-option>\n          </mat-select>\n        </mat-form-field>\n      </div>\n      <div class=\"form-input-container\">\n        <mat-form-field>\n          <input type=\"text\" placeholder=\"Number of pixels\" matInput formControlName=\"numPixels\" required>\n          <mat-error *ngIf=\"addNeopixelForm.controls['numPixels'].hasError('required')\">This field is required.</mat-error>\n          <mat-error *ngIf=\"addNeopixelForm.controls['numPixels'].hasError('min')\">Must have at least 1 pixel.</mat-error>\n        </mat-form-field>\n      </div>\n      <mat-form-field>\n        <mat-select placeholder=\"GPIO Pin\" formControlName=\"gpioPin\" required>\n          <mat-option *ngFor=\"let pin of gpioPinOptions\" value=\"{{pin}}\">{{pin}}</mat-option>\n        </mat-select>\n      </mat-form-field>\n      <div class=\"action-container\">\n        <button type=\"submit\" class=\"submit-button\" mat-raised-button color=\"primary\" [disabled]=\"addNeopixelForm.invalid\">Go!</button>\n      </div>\n    </form>\n  </div>\n</div>\n"
+module.exports = "<div class=\"dialog-container\">\r\n  <h1 mat-dialog-title>Add a Neopixel!</h1>\r\n  <div class=\"form-container\" mat-dialog-content>\r\n    <form [formGroup]=\"addNeopixelForm\" (ngSubmit)=\"addNeopixel()\" novalidate>\r\n      <div class=\"form-input-container\">\r\n        <mat-form-field>\r\n          <mat-select placeholder=\"Type\" formControlName=\"pixelType\" required>\r\n            <mat-option *ngFor=\"let type of pixelTypeOptions\" value=\"{{type}}\">{{type}}</mat-option>\r\n          </mat-select>\r\n        </mat-form-field>\r\n      </div>\r\n      <div class=\"form-input-container\">\r\n        <mat-form-field>\r\n          <input type=\"text\" placeholder=\"Number of pixels\" matInput formControlName=\"numPixels\" required>\r\n          <mat-error *ngIf=\"addNeopixelForm.controls['numPixels'].hasError('required')\">This field is required.</mat-error>\r\n          <mat-error *ngIf=\"addNeopixelForm.controls['numPixels'].hasError('min')\">Must have at least 1 pixel.</mat-error>\r\n        </mat-form-field>\r\n      </div>\r\n      <mat-form-field>\r\n        <mat-select placeholder=\"GPIO Pin\" formControlName=\"gpioPin\" required>\r\n          <mat-option *ngFor=\"let pin of gpioPinOptions\" value=\"{{pin}}\">{{pin}}</mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n      <div class=\"action-container\">\r\n        <button type=\"submit\" class=\"submit-button\" mat-raised-button color=\"primary\" [disabled]=\"addNeopixelForm.invalid\">Go!</button>\r\n      </div>\r\n    </form>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -287,7 +287,7 @@ var AddNeopixelDialogComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#add-button {\r\n    position: absolute;\r\n    width: 72px;\r\n    height: 72px;\r\n    right: 24px;\r\n    bottom: 24px;\r\n}\r\n\r\n#neopixels-container {\r\n    padding: 24px;\r\n}\r\n\r\n#neopixel-card {\r\n    margin-bottom: 24px;\r\n}\r\n\r\n#pixel-container {\r\n    margin: 8px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL2Rhc2hib2FyZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksbUJBQW1CO0lBQ25CLFlBQVk7SUFDWixhQUFhO0lBQ2IsWUFBWTtJQUNaLGFBQWE7Q0FDaEI7O0FBRUQ7SUFDSSxjQUFjO0NBQ2pCOztBQUVEO0lBQ0ksb0JBQW9CO0NBQ3ZCOztBQUVEO0lBQ0ksWUFBWTtDQUNmIiwiZmlsZSI6InNyYy9hcHAvZGFzaGJvYXJkL2Rhc2hib2FyZC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2FkZC1idXR0b24ge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgd2lkdGg6IDcycHg7XHJcbiAgICBoZWlnaHQ6IDcycHg7XHJcbiAgICByaWdodDogMjRweDtcclxuICAgIGJvdHRvbTogMjRweDtcclxufVxyXG5cclxuI25lb3BpeGVscy1jb250YWluZXIge1xyXG4gICAgcGFkZGluZzogMjRweDtcclxufVxyXG5cclxuI25lb3BpeGVsLWNhcmQge1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMjRweDtcclxufVxyXG5cclxuI3BpeGVsLWNvbnRhaW5lciB7XHJcbiAgICBtYXJnaW46IDhweDtcclxufSJdfQ== */"
+module.exports = "#add-button {\r\n    position: absolute;\r\n    width: 72px;\r\n    height: 72px;\r\n    right: 24px;\r\n    bottom: 24px;\r\n}\r\n\r\n#neopixels-container {\r\n    padding: 24px;\r\n}\r\n\r\n#neopixel-card {\r\n    margin-bottom: 24px;\r\n}\r\n\r\n#pixel-container {\r\n    margin: 8px;\r\n}\r\n\r\n#neopixel-actions {\r\n    position: absolute;\r\n    right:0;\r\n    top:0;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL2Rhc2hib2FyZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksbUJBQW1CO0lBQ25CLFlBQVk7SUFDWixhQUFhO0lBQ2IsWUFBWTtJQUNaLGFBQWE7Q0FDaEI7O0FBRUQ7SUFDSSxjQUFjO0NBQ2pCOztBQUVEO0lBQ0ksb0JBQW9CO0NBQ3ZCOztBQUVEO0lBQ0ksWUFBWTtDQUNmOztBQUVEO0lBQ0ksbUJBQW1CO0lBQ25CLFFBQVE7SUFDUixNQUFNO0NBQ1QiLCJmaWxlIjoic3JjL2FwcC9kYXNoYm9hcmQvZGFzaGJvYXJkLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjYWRkLWJ1dHRvbiB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB3aWR0aDogNzJweDtcclxuICAgIGhlaWdodDogNzJweDtcclxuICAgIHJpZ2h0OiAyNHB4O1xyXG4gICAgYm90dG9tOiAyNHB4O1xyXG59XHJcblxyXG4jbmVvcGl4ZWxzLWNvbnRhaW5lciB7XHJcbiAgICBwYWRkaW5nOiAyNHB4O1xyXG59XHJcblxyXG4jbmVvcGl4ZWwtY2FyZCB7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAyNHB4O1xyXG59XHJcblxyXG4jcGl4ZWwtY29udGFpbmVyIHtcclxuICAgIG1hcmdpbjogOHB4O1xyXG59XHJcblxyXG4jbmVvcGl4ZWwtYWN0aW9ucyB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICByaWdodDowO1xyXG4gICAgdG9wOjA7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -298,7 +298,7 @@ module.exports = "#add-button {\r\n    position: absolute;\r\n    width: 72px;\r
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"component-container full-container\">\r\n  <div class=\"items-container\" id=\"neopixels-container\">\r\n    <mat-card class=\"card-container\" id=\"neopixel-card\" *ngFor=\"let neopixel of neopixels; let id = index\">\r\n      <mat-card-header>\r\n        {{neopixel.id}}\r\n      </mat-card-header>\r\n      <mat-card-content>\r\n        <div class=\"items-container items-container-row\">\r\n          <div id=\"pixel-container\" *ngFor=\"let pixel of neopixel.pixels; let index = index\">\r\n            <button (click)=\"openPixelColorDialog(id, index)\" id=\"pixel\" mat-fab>\r\n              <mat-icon>color_lens</mat-icon>\r\n            </button>\r\n            <!-- <input [(colorPicker)]=\"color\" [style.background]=\"color\"/> -->\r\n          </div>\r\n        </div>\r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n  <button (click)=\"openAddNeopixelDialog()\" id=\"add-button\" mat-fab color=\"primary\">\r\n    <mat-icon>add</mat-icon>\r\n  </button>\r\n</div>\r\n"
+module.exports = "<div class=\"component-container full-container\">\r\n  <div class=\"items-container\" id=\"neopixels-container\">\r\n    <mat-card class=\"card-container\" id=\"neopixel-card\" *ngFor=\"let neopixel of neopixels; let id = index\">\r\n      <mat-card-header id=\"neopixel-card-header\">\r\n        <mat-card-title>{{neopixel.id}}</mat-card-title>\r\n        <div id=\"neopixel-actions\">\r\n          <button id=\"clear-button\" (click)=\"clearNeopixel(neopixel.id)\" mat-raised-button color=\"primary\">\r\n            Clear\r\n          </button>\r\n        </div>\r\n      </mat-card-header>\r\n      <mat-card-content>\r\n        <div class=\"items-container items-container-row\">\r\n          <div id=\"pixel-container\" *ngFor=\"let pixel of neopixel.pixels; let index = index\">\r\n            <button (click)=\"openPixelColorDialog(id, index)\" id=\"pixel\" mat-fab>\r\n              <mat-icon>color_lens</mat-icon>\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n  <button (click)=\"openAddNeopixelDialog()\" id=\"add-button\" mat-fab color=\"primary\">\r\n    <mat-icon>add</mat-icon>\r\n  </button>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -348,12 +348,21 @@ var DashboardComponent = /** @class */ (function () {
             _this.neopixelDataSource.loadNeopixels();
         });
     };
-    DashboardComponent.prototype.openPixelColorDialog = function (neoPixelId, pixelIndex) {
+    DashboardComponent.prototype.openPixelColorDialog = function (neopixelId, pixelIndex) {
         var dialogRef = this.pixelColorDialog.open(_pixel_color_dialog_pixel_color_dialog_component__WEBPACK_IMPORTED_MODULE_4__["PixelColorDialogComponent"], {
             data: {
-                neoPixelId: neoPixelId,
+                neoPixelId: neopixelId,
                 pixelIndex: pixelIndex
             }
+        });
+    };
+    DashboardComponent.prototype.clearNeopixel = function (neopixelId) {
+        var _this = this;
+        this.neopixelService.clearNeopixel(neopixelId).subscribe(function (data) {
+            console.log(data);
+            _this.neopixelDataSource.loadNeopixels();
+        }, function (err) {
+            console.error(err);
         });
     };
     DashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -597,7 +606,12 @@ var NeopixelService = /** @class */ (function () {
     };
     NeopixelService.prototype.updatePixel = function (pixel) {
         return this.http
-            .put("http://192.168.0.106:5000/api/strip?id=" + pixel.neopixelId + "&index=" + pixel.index + "&r=" + pixel.color[0] + "&g=" + pixel.color[1] + "&b=" + pixel.color[2], {})
+            .put("http://192.168.0.106:5000/api/strip?id=" + pixel.neopixelId + "&index_start=" + pixel.index + "&index_end=" + pixel.index + "&r=" + pixel.color[0] + "&g=" + pixel.color[1] + "&b=" + pixel.color[2], {})
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleObservableError));
+    };
+    NeopixelService.prototype.clearNeopixel = function (neopixelId) {
+        return this.http
+            .delete("http://192.168.0.106:5000/api/strip?id=" + neopixelId)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleObservableError));
     };
     NeopixelService.prototype.handleObservableError = function (error) {
