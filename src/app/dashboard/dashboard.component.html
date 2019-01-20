@@ -1,8 +1,13 @@
 <div class="component-container full-container">
   <div class="items-container" id="neopixels-container">
     <mat-card class="card-container" id="neopixel-card" *ngFor="let neopixel of neopixels; let id = index">
-      <mat-card-header>
-        {{neopixel.id}}
+      <mat-card-header id="neopixel-card-header">
+        <mat-card-title>{{neopixel.id}}</mat-card-title>
+        <div id="neopixel-actions">
+          <button class="close-button" mat-icon-button>
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
       </mat-card-header>
       <mat-card-content>
         <div class="items-container items-container-row">
@@ -10,7 +15,6 @@
             <button (click)="openPixelColorDialog(id, index)" id="pixel" mat-fab>
               <mat-icon>color_lens</mat-icon>
             </button>
-            <!-- <input [(colorPicker)]="color" [style.background]="color"/> -->
           </div>
         </div>
       </mat-card-content>

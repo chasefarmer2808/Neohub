@@ -17,3 +17,9 @@
 #pixel-container {
     margin: 8px;
 }
+
+#neopixel-actions {
+    position: absolute;
+    right:0;
+    top:0;
+}
