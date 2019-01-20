@@ -38,6 +38,14 @@ export class NeopixelService {
       );
   }
 
+  deleteNeopixel(neopixelId: Number): Observable<any> {
+    return this.http
+      .delete<any>(`http://192.168.0.106:5000/api/strip?id=${neopixelId}`)
+      .pipe(
+        catchError(this.handleObservableError)
+      );
+  }
+
   private handleObservableError(error: HttpErrorResponse) {
     return throwError(error.message);
   }
