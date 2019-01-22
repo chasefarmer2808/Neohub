@@ -1,3 +1,5 @@
+export const BLACK: number[] = [0, 0, 0]
+
 export class Pixel {
     neopixelId: number;
     index: number;

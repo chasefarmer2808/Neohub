@@ -9,7 +9,7 @@ import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
 import { NeopixelDataSource } from 'src/app/services/neopixel/neopixel-data-source';
 
 import { Neopixel } from 'src/app/services/neopixel/neopixel';
-import { Pixel } from '../services/neopixel/pixel';
+import { BLACK } from '../services/neopixel/pixel';
 
 @Component({
   selector: 'app-dashboard',
@@ -60,12 +60,22 @@ export class DashboardComponent implements OnInit {
     this.neopixelService.clearNeopixel(neopixelId).subscribe(
       (data) => {
         console.log(data);
-        this.neopixelDataSource.loadNeopixels();
+        this.fillNeopixel(neopixelId, BLACK);
       },
       (err) => {
         console.error(err);
       }
     )
+  }
+
+  decimalArrayToRGB(colors: number[]): string {
+    return `rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`;
+  }
+
+  fillNeopixel(id, color) {
+    for (let pixel of this.neopixels[id].pixels) {
+      pixel.color = color;
+    }
   }
 
 }

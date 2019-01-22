@@ -24,7 +24,6 @@ export class NeopixelService {
   getNeopixels(): Observable<Neopixel[]> {
     return this.http
       .get<Neopixel[]>('http://192.168.0.106:5000/api/strip')
-      // .get<Neopixel[]>('assets/data/data.json')
       .pipe(
         catchError(this.handleObservableError)
       );

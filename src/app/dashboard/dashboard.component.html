@@ -12,7 +12,7 @@
       <mat-card-content>
         <div class="items-container items-container-row">
           <div id="pixel-container" *ngFor="let pixel of neopixel.pixels; let index = index">
-            <button (click)="openPixelColorDialog(id, index)" id="pixel" mat-fab>
+            <button [ngStyle]="{'background-color': decimalArrayToRGB(pixel.color)}" (click)="openPixelColorDialog(id, index)" id="pixel" mat-fab>
               <mat-icon>color_lens</mat-icon>
             </button>
           </div>
