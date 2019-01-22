@@ -21,7 +21,7 @@ class Neopixel(object):
         self.pixels = []
 
         for i in range(0, num_pixels):
-            self.pixels.append(Pixel(i, (0, 0, 0)))
+            self.pixels.append(Pixel(self.id, i, (0, 0, 0)))
             self.neopixel[i] = (0, 0, 0)
 
     def get_gpio_pin(self):
