@@ -9,7 +9,7 @@ export const NeopixelsMock: Neopixel[] = [
             {
                 neopixelId: 0,
                 index: 0,
-                color: ['255, 255, 255']
+                color: ['255', '255', '255']
             }
         ]
     }

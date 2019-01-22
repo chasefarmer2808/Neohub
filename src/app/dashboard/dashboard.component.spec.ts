@@ -12,6 +12,8 @@ import { AddNeopixelDialogComponent } from './add-neopixel-dialog/add-neopixel-d
 import { NeopixelService } from '../services/neopixel/neopixel.service';
 
 import { NeopixelsMock } from '../services/neopixel/neopixels.mock';
+import { By } from '@angular/platform-browser';
+import { BLACK } from '../services/neopixel/pixel';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -74,11 +76,47 @@ describe('DashboardComponent', () => {
     });
   });
 
+  it('pixel button should have initial background color', () => {
+    let pixelButton: any;
+
+    fixture.whenRenderingDone().then(() => {
+      pixelButton = de.query(By.css('#pixel')).nativeElement;
+      expect(pixelButton.style.backgroundColor).toEqual('rgb(255, 255, 255)');
+    });
+  });
+
+  it('should update background color after updating a pixel color', () => {
+    let pixelButton: any;
+
+    fixture.whenStable().then(() => {
+      component.neopixels[0].pixels[0].color = ['123', '123', '123'];
+
+      fixture.detectChanges();
+
+      fixture.whenRenderingDone().then(() => {
+        pixelButton = de.query(By.css('#pixel')).nativeElement;
+        expect(pixelButton.style.backgroundColor).toEqual('rgb(123, 123, 123)');
+      });
+    });
+  })
+
   it('should call the clearNeopixel service function with the appropriate neopixel id', () => {
     component.clearNeopixel(0)
     
-    fixture.whenStable().then(() => {
+    fixture.whenRenderingDone().then(() => {
       expect(clearNeopixelSpy).toHaveBeenCalledWith(0);
     }) 
+  });
+
+  it('should set all background colors to black', () => {
+    let pixelButton: any;
+
+    component.fillNeopixel(0, BLACK);
+    fixture.detectChanges();
+    
+    fixture.whenRenderingDone().then(() => {
+      pixelButton = de.query(By.css('#pixel')).nativeElement;
+      expect(pixelButton.style.backgroundColor).toEqual('rgb(0, 0, 0)');
+    });
   });
 });

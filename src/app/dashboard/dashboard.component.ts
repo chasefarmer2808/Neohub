@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   neopixels: Neopixel[];
   neopixelDataSource: NeopixelDataSource;
 
-  constructor(public addNeopixelDialog: MatDialog,
+  constructor(private addNeopixelDialog: MatDialog,
               private pixelColorDialog: MatDialog, 
               private neopixelService: NeopixelService) { }
 
@@ -50,8 +50,7 @@ export class DashboardComponent implements OnInit {
     const dialogRef = this.pixelColorDialog.open(PixelColorDialogComponent,
       { 
         data: {
-          neoPixelId: neopixelId,
-          pixelIndex: pixelIndex
+          pixelRef: this.neopixels[neopixelId].pixels[pixelIndex]
         }
       });
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Inject } from '@angular/core';
+import { Component, OnInit, Output, Inject, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
 import { Pixel } from 'src/app/services/neopixel/pixel';
@@ -13,23 +13,22 @@ export class PixelColorDialogComponent implements OnInit {
   color = '#FF0000';
   neoPixelId: number;
   pixelIndex: number;
+  selectedPixel: Pixel;
 
-  // TODO: Pass pixel object in.
   constructor(
     private neoPixelService: NeopixelService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
     console.log(this.data)
-    this.neoPixelId = this.data.neoPixelId;
-    this.pixelIndex = this.data.pixelIndex;
+    this.selectedPixel = this.data.pixelRef;
   }
 
   updatePixel(evt: string) {
-    console.log(this.neoPixelId, this.pixelIndex, evt);
     let rgb = this.rgbToDecimalArray(evt);
-    let newPixel = new Pixel(this.neoPixelId, this.pixelIndex, rgb);
-    this.neoPixelService.updatePixel(newPixel).subscribe(
+    this.selectedPixel.color = rgb;
+    console.log(this.selectedPixel);
+    this.neoPixelService.updatePixel(this.selectedPixel).subscribe(
       (data) => {
         console.log(data);
       },
