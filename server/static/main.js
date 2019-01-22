@@ -298,7 +298,7 @@ module.exports = "#add-button {\r\n    position: absolute;\r\n    width: 72px;\r
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"component-container full-container\">\r\n  <div class=\"items-container\" id=\"neopixels-container\">\r\n    <mat-card class=\"card-container\" id=\"neopixel-card\" *ngFor=\"let neopixel of neopixels; let id = index\">\r\n      <mat-card-header id=\"neopixel-card-header\">\r\n        <mat-card-title>{{neopixel.id}}</mat-card-title>\r\n        <div id=\"neopixel-actions\">\r\n          <button id=\"clear-button\" (click)=\"clearNeopixel(neopixel.id)\" mat-raised-button color=\"primary\">\r\n            Clear\r\n          </button>\r\n        </div>\r\n      </mat-card-header>\r\n      <mat-card-content>\r\n        <div class=\"items-container items-container-row\">\r\n          <div id=\"pixel-container\" *ngFor=\"let pixel of neopixel.pixels; let index = index\">\r\n            <button (click)=\"openPixelColorDialog(id, index)\" id=\"pixel\" mat-fab>\r\n              <mat-icon>color_lens</mat-icon>\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n  <button (click)=\"openAddNeopixelDialog()\" id=\"add-button\" mat-fab color=\"primary\">\r\n    <mat-icon>add</mat-icon>\r\n  </button>\r\n</div>\r\n"
+module.exports = "<div class=\"component-container full-container\">\r\n  <div class=\"items-container\" id=\"neopixels-container\">\r\n    <mat-card class=\"card-container\" id=\"neopixel-card\" *ngFor=\"let neopixel of neopixels; let id = index\">\r\n      <mat-card-header id=\"neopixel-card-header\">\r\n        <mat-card-title>{{neopixel.id}}</mat-card-title>\r\n        <div id=\"neopixel-actions\">\r\n          <button id=\"clear-button\" (click)=\"clearNeopixel(neopixel.id)\" mat-raised-button color=\"primary\">\r\n            Clear\r\n          </button>\r\n        </div>\r\n      </mat-card-header>\r\n      <mat-card-content>\r\n        <div class=\"items-container items-container-row\">\r\n          <div id=\"pixel-container\" *ngFor=\"let pixel of neopixel.pixels; let index = index\">\r\n            <button [ngStyle]=\"{'background-color': decimalArrayToRGB(pixel.color)}\" (click)=\"openPixelColorDialog(id, index)\" id=\"pixel\" mat-fab>\r\n              <mat-icon>color_lens</mat-icon>\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n  <button (click)=\"openAddNeopixelDialog()\" id=\"add-button\" mat-fab color=\"primary\">\r\n    <mat-icon>add</mat-icon>\r\n  </button>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -319,6 +319,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pixel_color_dialog_pixel_color_dialog_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pixel-color-dialog/pixel-color-dialog.component */ "./src/app/dashboard/pixel-color-dialog/pixel-color-dialog.component.ts");
 /* harmony import */ var src_app_services_neopixel_neopixel_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/neopixel/neopixel.service */ "./src/app/services/neopixel/neopixel.service.ts");
 /* harmony import */ var src_app_services_neopixel_neopixel_data_source__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/neopixel/neopixel-data-source */ "./src/app/services/neopixel/neopixel-data-source.ts");
+/* harmony import */ var _services_neopixel_pixel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/neopixel/pixel */ "./src/app/services/neopixel/pixel.ts");
+
 
 
 
@@ -351,8 +353,7 @@ var DashboardComponent = /** @class */ (function () {
     DashboardComponent.prototype.openPixelColorDialog = function (neopixelId, pixelIndex) {
         var dialogRef = this.pixelColorDialog.open(_pixel_color_dialog_pixel_color_dialog_component__WEBPACK_IMPORTED_MODULE_4__["PixelColorDialogComponent"], {
             data: {
-                neoPixelId: neopixelId,
-                pixelIndex: pixelIndex
+                pixelRef: this.neopixels[neopixelId].pixels[pixelIndex]
             }
         });
     };
@@ -360,10 +361,19 @@ var DashboardComponent = /** @class */ (function () {
         var _this = this;
         this.neopixelService.clearNeopixel(neopixelId).subscribe(function (data) {
             console.log(data);
-            _this.neopixelDataSource.loadNeopixels();
+            _this.fillNeopixel(neopixelId, _services_neopixel_pixel__WEBPACK_IMPORTED_MODULE_7__["BLACK"]);
         }, function (err) {
             console.error(err);
         });
+    };
+    DashboardComponent.prototype.decimalArrayToRGB = function (colors) {
+        return "rgb(" + colors[0] + ", " + colors[1] + ", " + colors[2] + ")";
+    };
+    DashboardComponent.prototype.fillNeopixel = function (id, color) {
+        for (var _i = 0, _a = this.neopixels[id].pixels; _i < _a.length; _i++) {
+            var pixel = _a[_i];
+            pixel.color = color;
+        }
     };
     DashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -389,7 +399,7 @@ var DashboardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#color-picker-container {\r\n    \r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL3BpeGVsLWNvbG9yLWRpYWxvZy9waXhlbC1jb2xvci1kaWFsb2cuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7Q0FFQyIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC9waXhlbC1jb2xvci1kaWFsb2cvcGl4ZWwtY29sb3ItZGlhbG9nLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjY29sb3ItcGlja2VyLWNvbnRhaW5lciB7XHJcbiAgICBcclxufVxyXG5cclxuIl19 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC9waXhlbC1jb2xvci1kaWFsb2cvcGl4ZWwtY29sb3ItZGlhbG9nLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -400,7 +410,7 @@ module.exports = "#color-picker-container {\r\n    \r\n}\r\n\r\n\r\n/*# sourceMa
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"dialog-container\" id=\"color-picker-container\">\r\n  <span [style.background]=\"color\"\r\n      [cpToggle]=\"true\"\r\n      [cpDialogDisplay]=\"'inline'\"\r\n      [cpOKButton]=\"true\"\r\n      [cpCancelButton]=\"true\"\r\n      [cpAlphaChannel]=\"'disabled'\"\r\n      [cpOutputFormat]=\"'rgba'\"\r\n      [(colorPicker)]=\"color\"\r\n      (colorPickerSelect)=\"updatePixel($event)\"></span>\r\n</div>\r\n"
+module.exports = "<div class=\"dialog-container\" id=\"color-picker-container\">\r\n  <span [style.background]=\"color\"\r\n      [cpToggle]=\"true\"\r\n      [cpDialogDisplay]=\"'inline'\"\r\n      [cpOKButton]=\"true\"\r\n      [cpOKButtonClass]=\"'mat-raised-button'\"\r\n      [cpCancelButton]=\"true\"\r\n      [cpCancelButtonClass]=\"'mat-raised-button'\"\r\n      [cpAlphaChannel]=\"'disabled'\"\r\n      [cpOutputFormat]=\"'rgba'\"\r\n      [(colorPicker)]=\"color\"\r\n      (colorPickerSelect)=\"updatePixel($event)\"></span>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -418,14 +428,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var src_app_services_neopixel_neopixel_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/neopixel/neopixel.service */ "./src/app/services/neopixel/neopixel.service.ts");
-/* harmony import */ var src_app_services_neopixel_pixel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/neopixel/pixel */ "./src/app/services/neopixel/pixel.ts");
-
 
 
 
 
 var PixelColorDialogComponent = /** @class */ (function () {
-    // TODO: Pass pixel object in.
     function PixelColorDialogComponent(neoPixelService, data) {
         this.neoPixelService = neoPixelService;
         this.data = data;
@@ -433,14 +440,13 @@ var PixelColorDialogComponent = /** @class */ (function () {
     }
     PixelColorDialogComponent.prototype.ngOnInit = function () {
         console.log(this.data);
-        this.neoPixelId = this.data.neoPixelId;
-        this.pixelIndex = this.data.pixelIndex;
+        this.selectedPixel = this.data.pixelRef;
     };
     PixelColorDialogComponent.prototype.updatePixel = function (evt) {
-        console.log(this.neoPixelId, this.pixelIndex, evt);
         var rgb = this.rgbToDecimalArray(evt);
-        var newPixel = new src_app_services_neopixel_pixel__WEBPACK_IMPORTED_MODULE_4__["Pixel"](this.neoPixelId, this.pixelIndex, rgb);
-        this.neoPixelService.updatePixel(newPixel).subscribe(function (data) {
+        this.selectedPixel.color = rgb;
+        console.log(this.selectedPixel);
+        this.neoPixelService.updatePixel(this.selectedPixel).subscribe(function (data) {
             console.log(data);
         }, function (err) {
             console.error(err);
@@ -601,7 +607,6 @@ var NeopixelService = /** @class */ (function () {
     NeopixelService.prototype.getNeopixels = function () {
         return this.http
             .get('http://192.168.0.106:5000/api/strip')
-            // .get<Neopixel[]>('assets/data/data.json')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleObservableError));
     };
     NeopixelService.prototype.updatePixel = function (pixel) {
@@ -634,12 +639,14 @@ var NeopixelService = /** @class */ (function () {
 /*!********************************************!*\
   !*** ./src/app/services/neopixel/pixel.ts ***!
   \********************************************/
-/*! exports provided: Pixel */
+/*! exports provided: BLACK, Pixel */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BLACK", function() { return BLACK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pixel", function() { return Pixel; });
+var BLACK = [0, 0, 0];
 var Pixel = /** @class */ (function () {
     function Pixel(id, index, color) {
         this.neopixelId = id;
