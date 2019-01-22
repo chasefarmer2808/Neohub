@@ -43,4 +43,12 @@ describe('PixelColorDialogComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should convert rgb string to decimal array', () => {
+    let testString = 'rgb(0, 0, 0)';
+
+    let res = component.rgbToDecimalArray(testString);
+
+    expect(res).toEqual(['0', '0', '0'])
+  })
 });
