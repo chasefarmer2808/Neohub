@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   neopixels: Neopixel[];
   neopixelDataSource: NeopixelDataSource;
 
-  constructor(private addNeopixelDialog: MatDialog,
+  constructor(public addNeopixelDialog: MatDialog,
               private pixelColorDialog: MatDialog, 
               private neopixelService: NeopixelService) { }
 
