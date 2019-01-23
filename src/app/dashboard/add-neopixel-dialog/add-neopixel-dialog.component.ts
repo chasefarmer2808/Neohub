@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
 
+const numbersOnlyRegex = /^\d+$/;
+
 @Component({
   selector: 'app-add-neopixel-dialog',
   templateUrl: './add-neopixel-dialog.component.html',
@@ -27,8 +29,8 @@ export class AddNeopixelDialogComponent implements OnInit {
   createAddNeopixelForm() {
     this.addNeopixelForm = new FormGroup({
       pixelType: new FormControl(this.pixelTypeOptions[0], [Validators.required]),
-      numPixels: new FormControl(64, [Validators.required, Validators.min(1)]),
-      gpioPin: new FormControl(this.gpioPinOptions[2], [Validators.required]) // GPIO 18 is standard per the Circuit Python docs.
+      numPixels: new FormControl(64, [Validators.required, Validators.min(1), Validators.pattern(numbersOnlyRegex)]),
+      gpioPin: new FormControl(this.gpioPinOptions[2], [Validators.required, Validators.pattern(numbersOnlyRegex)]) // GPIO 18 is standard per the Circuit Python docs.
     });
   }
 
