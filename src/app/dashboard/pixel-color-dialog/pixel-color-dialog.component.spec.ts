@@ -6,6 +6,7 @@ import { PixelColorDialogComponent } from './pixel-color-dialog.component';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { NeopixelsMock } from 'src/app/services/neopixel/neopixels.mock';
 
 describe('PixelColorDialogComponent', () => {
   let component: PixelColorDialogComponent;
@@ -22,7 +23,9 @@ describe('PixelColorDialogComponent', () => {
         },
         {
           provide: MAT_DIALOG_DATA, 
-          useValue: {}
+          useValue: {
+            pixelRef: NeopixelsMock[0].pixels[0]
+          }
         }
       ],
       imports: [
@@ -49,6 +52,14 @@ describe('PixelColorDialogComponent', () => {
 
     let res = component.rgbToDecimalArray(testString);
 
-    expect(res).toEqual(['0', '0', '0'])
-  })
+    expect(res).toEqual([0, 0, 0])
+  });
+
+  it('should call the update pixel function when the ok button is clicked', () => {
+
+  });
+
+  it('should be set to the selected pixel\'s color when initialized', () => {
+
+  });
 });

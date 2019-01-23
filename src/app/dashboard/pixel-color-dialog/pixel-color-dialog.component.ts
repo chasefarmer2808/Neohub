@@ -10,24 +10,22 @@ import { Pixel } from 'src/app/services/neopixel/pixel';
 })
 export class PixelColorDialogComponent implements OnInit {
 
-  color = '#FF0000';
-  neoPixelId: number;
-  pixelIndex: number;
   selectedPixel: Pixel;
+  color: string;
 
   constructor(
     private neoPixelService: NeopixelService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
-    console.log(this.data)
+    console.log('DATA: ', this.data)
     this.selectedPixel = this.data.pixelRef;
+    this.color = this.decimalArrayToRGB(this.selectedPixel.color);
   }
 
   updatePixel(evt: string) {
     let rgb = this.rgbToDecimalArray(evt);
     this.selectedPixel.color = rgb;
-    console.log(this.selectedPixel);
     this.neoPixelService.updatePixel(this.selectedPixel).subscribe(
       (data) => {
         console.log(data);
@@ -38,10 +36,17 @@ export class PixelColorDialogComponent implements OnInit {
     )
   }
 
-  rgbToDecimalArray(rgbColor: string): string[] {
+  rgbToDecimalArray(rgbColor: string): number[] {
     // TODO: Replace with regex. 
-    let res = rgbColor.replace(/\s/g, "").replace(/rgb\(/g, "").replace(/\)/g, "").split(',');
+    let rgbVals = rgbColor.replace(/\s/g, "").replace(/rgb\(/g, "").replace(/\)/g, "").split(',');
+    let res = rgbVals.map(val => {
+      return parseInt(val);
+    })
     return res;
+  }
+
+  decimalArrayToRGB(colors: number[]): string {
+    return `rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`;
   }
 
 }

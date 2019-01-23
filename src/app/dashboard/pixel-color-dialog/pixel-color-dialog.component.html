@@ -1,13 +1,14 @@
 <div class="dialog-container" id="color-picker-container">
-  <span [style.background]="color"
-      [cpToggle]="true"
-      [cpDialogDisplay]="'inline'"
-      [cpOKButton]="true"
-      [cpOKButtonClass]="'mat-raised-button'"
-      [cpCancelButton]="true"
-      [cpCancelButtonClass]="'mat-raised-button'"
-      [cpAlphaChannel]="'disabled'"
-      [cpOutputFormat]="'rgba'"
-      [(colorPicker)]="color"
-      (colorPickerSelect)="updatePixel($event)"></span>
+  <span 
+    [cpToggle]="true"
+    [cpDialogDisplay]="'inline'"
+    [cpOKButton]="true"
+    [cpOKButtonClass]="'mat-raised-button'"
+    [cpCancelButton]="true"
+    [cpCancelButtonClass]="'mat-raised-button'"
+    [cpAlphaChannel]="'disabled'"
+    [cpOutputFormat]="'rgba'"
+    [(colorPicker)]="color"
+    (colorPickerSelect)="updatePixel($event)">
+  </span>
 </div>

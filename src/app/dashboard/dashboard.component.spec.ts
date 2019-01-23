@@ -89,7 +89,7 @@ describe('DashboardComponent', () => {
     let pixelButton: any;
 
     fixture.whenStable().then(() => {
-      component.neopixels[0].pixels[0].color = ['123', '123', '123'];
+      component.neopixels[0].pixels[0].color = [123, 123, 123];
 
       fixture.detectChanges();
 
