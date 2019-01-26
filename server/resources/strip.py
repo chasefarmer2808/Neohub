@@ -32,9 +32,8 @@ class Strip(Resource):
                             args['pin'],
                             args['num_pixels'],
                             args['brightness'])
-        print(strips)
+                            
         strips.append(new_strip)
-        print(strips)
         strip_id += 1
         
         for i in range(0, 3):

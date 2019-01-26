@@ -4,12 +4,14 @@ from flask_restful import Api
 from flask_marshmallow import Marshmallow
 
 from resources.strip import Strip
+from resources.animation import Animation
 
 app = Flask(__name__)
 api = Api(app)
 ma = Marshmallow(app)
 
 api.add_resource(Strip, '/api/strip')
+api.add_resource(Animation, '/api/animation')
 
 cors = CORS(app, resources={r'/api/*': {'origins': '*'}})
 
