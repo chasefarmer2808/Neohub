@@ -7,13 +7,14 @@ class AnimationThread(threading.Thread):
     threading.Thread.__init__(self)
     self.neopixel = neopixel
     self.animation = animation
+    self.stop_flag = False
 
     # TODO: Validate animation.
 
   def run(self):
     i = 0
 
-    while True:
+    while not self.stop_flag:
       frame = self.animation[i]
       colors = [tuple(c) for c in frame['colors']]
 
@@ -22,3 +23,6 @@ class AnimationThread(threading.Thread):
 
       i += 1
       i = i % len(self.animation)
+
+  def stop(self):
+    self.stop_flag = True

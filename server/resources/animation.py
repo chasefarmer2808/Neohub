@@ -1,5 +1,6 @@
 import json
 import time
+import threading
 from flask_restful import Resource
 from flask_restful.reqparse import RequestParser
 
@@ -12,7 +13,7 @@ class Animation(Resource):
     def __init__(self):
         pass
     
-    def get(self):
+    def post(self):
         anim_request_parser = RequestParser(bundle_errors=True)
         anim_request_parser.add_argument('id', type=int, required=True)
         anim_request_parser.add_argument('file', required=True)
@@ -20,6 +21,13 @@ class Animation(Resource):
 
         neopixel = strips[args['id']]
 
+        for thread in threading.enumerate():
+            if type(thread) is AnimationThread:
+                if thread.neopixel.id == neopixel.id:
+                    thread.stop_flag = True
+                    thread.join()
+                    return 200
+        
         with open(args['file']) as f:
             animation = json.load(f)
         
@@ -28,14 +36,5 @@ class Animation(Resource):
 
         anim_thread = AnimationThread(neopixel, res[0]['frames'])
         anim_thread.start()
-
-        # i = 0
-        # while(True):
-        #     frame = res[0]['frames'][i]
-        #     colors = [tuple(c) for c in frame['colors']]
-        #     neopixel.neopixel[:] = colors
-        #     time.sleep(frame['duration'])
-        #     i += 1
-        #     i = i % 3
 
         return res
