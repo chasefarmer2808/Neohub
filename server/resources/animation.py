@@ -1,6 +1,7 @@
 import json
 import time
 import threading
+from pathlib import Path, PurePath
 from flask_restful import Resource
 from flask_restful.reqparse import RequestParser
 
@@ -12,11 +13,18 @@ from animations.animation_thread import AnimationThread
 class Animation(Resource):
     def __init__(self):
         pass
+
+    def get(self):
+        anim_dir = Path('server/animations')
+        anim_paths = list(anim_dir.glob('*.json'))
+        anim_names = [path.stem for path in anim_paths]
+
+        return anim_names
     
     def post(self):
         anim_request_parser = RequestParser(bundle_errors=True)
         anim_request_parser.add_argument('id', type=int, required=True)
-        anim_request_parser.add_argument('file', required=True)
+        anim_request_parser.add_argument('animation_name', required=True)
         args = anim_request_parser.parse_args()
 
         neopixel = strips[args['id']]
@@ -27,8 +35,10 @@ class Animation(Resource):
                     thread.stop_flag = True
                     thread.join()
                     return 200
+
+        anim_file = PurePath('server', 'animations', '{}.json'.format(args['animation_name']))
         
-        with open(args['file']) as f:
+        with open(str(anim_file)) as f:
             animation = json.load(f)
         
         anim_schema = AnimationSchema()
