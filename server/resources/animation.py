@@ -5,6 +5,8 @@ from flask_restful.reqparse import RequestParser
 
 from resources.strip import strips
 from schemas.animation import AnimationSchema
+from animations.animation_thread import AnimationThread
+
 
 class Animation(Resource):
     def __init__(self):
@@ -21,16 +23,19 @@ class Animation(Resource):
         with open(args['file']) as f:
             animation = json.load(f)
         
-        animSchema = AnimationSchema()
-        res = animSchema.load(animation)
+        anim_schema = AnimationSchema()
+        res = anim_schema.load(animation)
 
-        i = 0
-        while(True):
-            frame = res[0]['frames'][i]
-            colors = [tuple(c) for c in frame['colors']]
-            neopixel.neopixel[:] = colors
-            time.sleep(frame['duration'])
-            i += 1
-            i = i % 3
+        anim_thread = AnimationThread(neopixel, res[0]['frames'])
+        anim_thread.start()
+
+        # i = 0
+        # while(True):
+        #     frame = res[0]['frames'][i]
+        #     colors = [tuple(c) for c in frame['colors']]
+        #     neopixel.neopixel[:] = colors
+        #     time.sleep(frame['duration'])
+        #     i += 1
+        #     i = i % 3
 
         return res
