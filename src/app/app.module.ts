@@ -14,13 +14,15 @@ import { AddNeopixelDialogComponent } from './dashboard/add-neopixel-dialog/add-
 import { PixelColorDialogComponent } from './dashboard/pixel-color-dialog/pixel-color-dialog.component';
 
 import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
+import { AnimationComponent } from './animation/animation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     AddNeopixelDialogComponent,
-    PixelColorDialogComponent
+    PixelColorDialogComponent,
+    AnimationComponent
   ],
   imports: [
     BrowserModule,
