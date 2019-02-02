@@ -5,6 +5,7 @@ import { AddNeopixelDialogComponent } from './add-neopixel-dialog/add-neopixel-d
 import { PixelColorDialogComponent } from './pixel-color-dialog/pixel-color-dialog.component';
 
 import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
+import { AnimationService } from '../services/animation/animation.service';
 
 import { NeopixelDataSource } from 'src/app/services/neopixel/neopixel-data-source';
 
@@ -23,7 +24,8 @@ export class NeopixelComponent implements OnInit {
 
   constructor(private addNeopixelDialog: MatDialog,
               private pixelColorDialog: MatDialog, 
-              private neopixelService: NeopixelService) { }
+              private neopixelService: NeopixelService,
+              private animationService: AnimationService) { }
 
   ngOnInit() {
     this.neopixelDataSource = new NeopixelDataSource(this.neopixelService);
@@ -34,6 +36,18 @@ export class NeopixelComponent implements OnInit {
       }
     )
     this.neopixelDataSource.loadNeopixels();
+  }
+
+  toggleAnimation(neopixelId: number, animation: string) {
+    this.animationService.toggleAnimation(neopixelId, animation).subscribe(
+      (data) => {
+        console.log(data);
+        this.neopixels[neopixelId].animating = !this.neopixels[neopixelId].animating;
+      },
+      (err) => {
+        console.error(err);
+      }
+    )
   }
 
   openAddNeopixelDialog() {

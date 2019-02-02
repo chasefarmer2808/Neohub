@@ -12,9 +12,9 @@ export class AnimationService {
 
   constructor(private http: HttpClient) { }
 
-  getAnimationsByNeopixelId(neopixelId: number): Observable<Animation[]> {
+  toggleAnimation(neopixelId: number, animation: string): Observable<any> {
     return this.http
-      .get<Animation[]>(`http://192.168.0.106:5000/api/animation?id=${neopixelId}`)
+      .put<any>(`http://192.168.0.106:5000/api/animation?id=${neopixelId}&animation_name=${animation}`, {})
       .pipe(
         catchError(this.handleObservableError)
       );
