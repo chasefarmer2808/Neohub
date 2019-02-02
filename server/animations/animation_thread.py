@@ -17,7 +17,7 @@ class AnimationThread(threading.Thread):
     while not self.stop_flag:
       frame = self.animation[i]
       colors = [tuple(c) for c in frame['colors']]
-
+      
       self.neopixel.neopixel[:] = colors
       time.sleep(frame['duration'])
 

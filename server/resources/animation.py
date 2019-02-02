@@ -21,7 +21,7 @@ class Animation(Resource):
 
         return anim_names
     
-    def post(self):
+    def put(self):
         anim_request_parser = RequestParser(bundle_errors=True)
         anim_request_parser.add_argument('id', type=int, required=True)
         anim_request_parser.add_argument('animation_name', required=True)
