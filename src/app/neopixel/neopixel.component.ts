@@ -21,6 +21,7 @@ export class NeopixelComponent implements OnInit {
 
   neopixels: Neopixel[];
   neopixelDataSource: NeopixelDataSource;
+  selectedAnimIndex: number = 0;
 
   constructor(private addNeopixelDialog: MatDialog,
               private pixelColorDialog: MatDialog, 
@@ -38,10 +39,11 @@ export class NeopixelComponent implements OnInit {
     this.neopixelDataSource.loadNeopixels();
   }
 
-  toggleAnimation(neopixelId: number, animation: string) {
+  toggleAnimation(neopixelId: number, animation: string, animIndex: number) {
     this.animationService.toggleAnimation(neopixelId, animation).subscribe(
       (data) => {
         console.log(data);
+        this.selectedAnimIndex = animIndex;
         this.neopixels[neopixelId].animating = !this.neopixels[neopixelId].animating;
       },
       (err) => {

@@ -18,11 +18,11 @@
           </div>
         </div>
         <div class="items-container" id="animations-container">
-          <mat-card class="card-container" id="animation-container" *ngFor="let anim of neopixel.animations">
+          <mat-card class="card-container" id="animation-container" *ngFor="let anim of neopixel.animations; let index = index">
             <mat-card-content>
-                <button id="play-pause-button" (click)="toggleAnimation(neopixel.id, anim)" mat-fab color="primary">
-                  <mat-icon *ngIf="!neopixel.animating">play_arrow</mat-icon>
-                  <mat-icon *ngIf="neopixel.animating">pause</mat-icon>
+                <button id="play-pause-button" (click)="toggleAnimation(neopixel.id, anim, index)" mat-fab color="primary">
+                  <mat-icon *ngIf="!(selectedAnimIndex == index) || !neopixel.animating">play_arrow</mat-icon>
+                  <mat-icon *ngIf="selectedAnimIndex == index && neopixel.animating">pause</mat-icon>
                 </button>
                 <span id="animation-title">{{anim}}</span>
             </mat-card-content>
