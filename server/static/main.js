@@ -477,7 +477,7 @@ module.exports = "#add-button {\r\n    width: 72px;\r\n    height: 72px;\r\n}\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"component-container full-container\">\n  <div class=\"items-container\" id=\"neopixels-container\">\n    <mat-card class=\"card-container\" id=\"neopixel-card\" *ngFor=\"let neopixel of neopixels; let id = index\">\n      <mat-card-header id=\"neopixel-card-header\">\n        <mat-card-title>{{neopixel.id}}</mat-card-title>\n        <div id=\"neopixel-actions\">\n          <button id=\"clear-button\" (click)=\"clearNeopixel(neopixel.id)\" mat-raised-button color=\"primary\">\n            Clear\n          </button>\n        </div>\n      </mat-card-header>\n      <mat-card-content>\n        <div class=\"items-container items-container-row\">\n          <div id=\"pixel-container\" *ngFor=\"let pixel of neopixel.pixels; let index = index\">\n            <button [ngStyle]=\"{'background-color': decimalArrayToRGB(pixel.color)}\" (click)=\"openPixelColorDialog(id, index)\" id=\"pixel\" mat-fab>\n              <mat-icon>color_lens</mat-icon>\n            </button>\n          </div>\n        </div>\n        <div class=\"items-container\" id=\"animations-container\">\n          <mat-card class=\"card-container\" id=\"animation-container\" *ngFor=\"let anim of neopixel.animations\">\n            <mat-card-content>\n                <button id=\"play-pause-button\" (click)=\"toggleAnimation(neopixel.id, anim)\" mat-fab color=\"primary\">\n                  <mat-icon *ngIf=\"!neopixel.animating\">play_arrow</mat-icon>\n                  <mat-icon *ngIf=\"neopixel.animating\">pause</mat-icon>\n                </button>\n                <span id=\"animation-title\">{{anim}}</span>\n            </mat-card-content>\n          </mat-card>\n        </div>\n      </mat-card-content>\n    </mat-card>\n  </div>\n  <div class=\"neopixel-actions-container\">\n    <button class=\"neopixel-action\" (click)=\"openAddNeopixelDialog()\" id=\"add-button\" mat-fab color=\"primary\">\n      <mat-icon>add</mat-icon>\n    </button>\n  </div>\n</div>\n"
+module.exports = "<div class=\"component-container full-container\">\n  <div class=\"items-container\" id=\"neopixels-container\">\n    <mat-card class=\"card-container\" id=\"neopixel-card\" *ngFor=\"let neopixel of neopixels; let id = index\">\n      <mat-card-header id=\"neopixel-card-header\">\n        <mat-card-title>{{neopixel.id}}</mat-card-title>\n        <div id=\"neopixel-actions\">\n          <button id=\"clear-button\" (click)=\"clearNeopixel(neopixel.id)\" mat-raised-button color=\"primary\">\n            Clear\n          </button>\n        </div>\n      </mat-card-header>\n      <mat-card-content>\n        <div class=\"items-container items-container-row\">\n          <div id=\"pixel-container\" *ngFor=\"let pixel of neopixel.pixels; let index = index\">\n            <button [ngStyle]=\"{'background-color': decimalArrayToRGB(pixel.color)}\" (click)=\"openPixelColorDialog(id, index)\" id=\"pixel\" mat-fab>\n              <mat-icon>color_lens</mat-icon>\n            </button>\n          </div>\n        </div>\n        <div class=\"items-container\" id=\"animations-container\">\n          <mat-card class=\"card-container\" id=\"animation-container\" *ngFor=\"let anim of neopixel.animations; let index = index\">\n            <mat-card-content>\n                <button id=\"play-pause-button\" (click)=\"toggleAnimation(neopixel.id, anim, index)\" mat-fab color=\"primary\">\n                  <mat-icon *ngIf=\"!(selectedAnimIndex == index) || !neopixel.animating\">play_arrow</mat-icon>\n                  <mat-icon *ngIf=\"selectedAnimIndex == index && neopixel.animating\">pause</mat-icon>\n                </button>\n                <span id=\"animation-title\">{{anim}}</span>\n            </mat-card-content>\n          </mat-card>\n        </div>\n      </mat-card-content>\n    </mat-card>\n  </div>\n  <div class=\"neopixel-actions-container\">\n    <button class=\"neopixel-action\" (click)=\"openAddNeopixelDialog()\" id=\"add-button\" mat-fab color=\"primary\">\n      <mat-icon>add</mat-icon>\n    </button>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -515,6 +515,7 @@ var NeopixelComponent = /** @class */ (function () {
         this.pixelColorDialog = pixelColorDialog;
         this.neopixelService = neopixelService;
         this.animationService = animationService;
+        this.selectedAnimIndex = 0;
     }
     NeopixelComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -525,10 +526,11 @@ var NeopixelComponent = /** @class */ (function () {
         });
         this.neopixelDataSource.loadNeopixels();
     };
-    NeopixelComponent.prototype.toggleAnimation = function (neopixelId, animation) {
+    NeopixelComponent.prototype.toggleAnimation = function (neopixelId, animation, animIndex) {
         var _this = this;
         this.animationService.toggleAnimation(neopixelId, animation).subscribe(function (data) {
             console.log(data);
+            _this.selectedAnimIndex = animIndex;
             _this.neopixels[neopixelId].animating = !_this.neopixels[neopixelId].animating;
         }, function (err) {
             console.error(err);
