@@ -1,33 +1,3 @@
 <div class="component-container full-container">
-  <div class="items-container" id="neopixels-container">
-    <mat-card class="card-container" id="neopixel-card" *ngFor="let neopixel of neopixels; let id = index">
-      <mat-card-header id="neopixel-card-header">
-        <mat-card-title>{{neopixel.id}}</mat-card-title>
-        <div id="neopixel-actions">
-          <button id="clear-button" (click)="clearNeopixel(neopixel.id)" mat-raised-button color="primary">
-            Clear
-          </button>
-        </div>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="items-container items-container-row">
-          <div id="pixel-container" *ngFor="let pixel of neopixel.pixels; let index = index">
-            <button [ngStyle]="{'background-color': decimalArrayToRGB(pixel.color)}" (click)="openPixelColorDialog(id, index)" id="pixel" mat-fab>
-              <mat-icon>color_lens</mat-icon>
-            </button>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="dashboard-actions-container">
-    <a routerLink="/animations">
-      <button class="dashboard-action" id="animation-nav-button" mat-fab color="primary">
-          <mat-icon>movie_filter</mat-icon>
-      </button>
-    </a>
-    <button class="dashboard-action" (click)="openAddNeopixelDialog()" id="add-button" mat-fab color="primary">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
+  <app-neopixel></app-neopixel>
 </div>

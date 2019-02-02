@@ -1,0 +1,32 @@
+#add-button {
+    width: 72px;
+    height: 72px;
+}
+
+#neopixels-container {
+    padding: 24px;
+}
+
+#neopixel-card {
+    margin-bottom: 24px;
+}
+
+#pixel-container {
+    margin: 8px;
+}
+
+#neopixel-actions {
+    position: absolute;
+    right:0;
+    top:0;
+}
+
+.neopixel-actions-container {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+}
+
+.neopixel-action {
+    margin: 8px;
+}

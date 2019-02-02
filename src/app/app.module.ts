@@ -10,11 +10,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AddNeopixelDialogComponent } from './dashboard/add-neopixel-dialog/add-neopixel-dialog.component';
-import { PixelColorDialogComponent } from './dashboard/pixel-color-dialog/pixel-color-dialog.component';
+import { AddNeopixelDialogComponent } from './neopixel/add-neopixel-dialog/add-neopixel-dialog.component';
+import { PixelColorDialogComponent } from './neopixel/pixel-color-dialog/pixel-color-dialog.component';
 
 import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
 import { AnimationComponent } from './animation/animation.component';
+import { NeopixelComponent } from './neopixel/neopixel.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AnimationComponent } from './animation/animation.component';
     DashboardComponent,
     AddNeopixelDialogComponent,
     PixelColorDialogComponent,
-    AnimationComponent
+    AnimationComponent,
+    NeopixelComponent
   ],
   imports: [
     BrowserModule,
