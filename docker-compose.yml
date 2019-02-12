@@ -1,0 +1,20 @@
+version: '3'
+services:
+  web:
+    build: .
+    privileged: true
+    links:
+      - db
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/neohub/server
+  db:
+    image: hypriot/rpi-mysql
+    restart: always
+    ports:
+      - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
