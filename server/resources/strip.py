@@ -3,7 +3,6 @@ import os
 print(os.getcwd())
 from flask_restful import Resource, marshal_with
 from flask_restful.reqparse import RequestParser
-from server.app import mongo
 
 from schemas.neopixel import Neopixel, NeopixelSchema, GREEN, BLACK
 
@@ -12,8 +11,8 @@ strip_id = 0
 
 
 class Strip(Resource):
-    def __init__(self):
-        pass
+    def __init__(self, db):
+        self.db = db
 
     def get(self):
         neopixel_schema = NeopixelSchema(many=True)
@@ -35,8 +34,9 @@ class Strip(Resource):
                             args['num_pixels'],
                             args['brightness'])
         
-        neopixel_schemo = NeopixelSchema()
+        neopixel_schema = NeopixelSchema()
 
+        self.db.db.neopixels.insert(neopixel_schema.dump(new_strip))
                             
         strips.append(new_strip)
         strip_id += 1

@@ -13,7 +13,7 @@ mongo = PyMongo(app)
 api = Api(app)
 ma = Marshmallow(app)
 
-api.add_resource(Strip, '/api/strip')
+api.add_resource(Strip, '/api/strip', resource_class_args=[mongo])
 api.add_resource(Animation, '/api/animation')
 
 cors = CORS(app, resources={r'/api/*': {'origins': '*'}})
