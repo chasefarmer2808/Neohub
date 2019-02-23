@@ -1,7 +1,9 @@
 import board
-
+import os
+print(os.getcwd())
 from flask_restful import Resource, marshal_with
 from flask_restful.reqparse import RequestParser
+from server.app import mongo
 
 from schemas.neopixel import Neopixel, NeopixelSchema, GREEN, BLACK
 
@@ -32,6 +34,9 @@ class Strip(Resource):
                             args['pin'],
                             args['num_pixels'],
                             args['brightness'])
+        
+        neopixel_schemo = NeopixelSchema()
+
                             
         strips.append(new_strip)
         strip_id += 1

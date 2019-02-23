@@ -2,11 +2,14 @@ from flask import Flask, render_template, redirect, url_for
 from flask_cors import CORS
 from flask_restful import Api
 from flask_marshmallow import Marshmallow
+from flask_pymongo import PyMongo
 
 from resources.strip import Strip
 from resources.animation import Animation
 
 app = Flask(__name__)
+app.config['MONGO_URI'] = 'mongodb://localhost:27017/mydb'
+mongo = PyMongo(app)
 api = Api(app)
 ma = Marshmallow(app)
 
