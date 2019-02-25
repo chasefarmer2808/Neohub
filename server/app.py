@@ -8,7 +8,7 @@ from resources.strip import Strip
 from resources.animation import Animation
 
 app = Flask(__name__)
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/mydb'
+app.config['MONGO_URI'] = 'mongodb://localhost:27017/neohub'
 mongo = PyMongo(app)
 api = Api(app)
 ma = Marshmallow(app)

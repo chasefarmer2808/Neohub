@@ -1,6 +1,4 @@
 import board
-import os
-print(os.getcwd())
 from flask_restful import Resource, marshal_with
 from flask_restful.reqparse import RequestParser
 
@@ -12,16 +10,16 @@ strip_id = 0
 
 class Strip(Resource):
     def __init__(self, db):
-        self.db = db
+        self.db = db.db
 
     def get(self):
+        neopixels = self.db.neopixel.find({})
+        print(neopixels)
         neopixel_schema = NeopixelSchema(many=True)
-        res = neopixel_schema.dump(strips)
+        res = neopixel_schema.dump(neopixels)
         return res
 
     def post(self):
-        global strips
-        global strip_id
         init_request_parser = RequestParser(bundle_errors=True)
         init_request_parser.add_argument('pin', type=str, required=True)
         init_request_parser.add_argument('num_pixels', type=int, required=True)
@@ -36,10 +34,10 @@ class Strip(Resource):
         
         neopixel_schema = NeopixelSchema()
 
-        self.db.db.neopixels.insert(neopixel_schema.dump(new_strip))
+        self.db.neopixel.insert(neopixel_schema.dump(new_strip))
                             
-        strips.append(new_strip)
-        strip_id += 1
+        # strips.append(new_strip)
+        # strip_id += 1
         
         for i in range(0, 3):
             new_strip.fill_blink(GREEN, 0.15)
