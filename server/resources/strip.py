@@ -1,6 +1,7 @@
 import board
 from flask_restful import Resource, marshal_with
 from flask_restful.reqparse import RequestParser
+from bson.objectid import ObjectId
 
 from schemas.neopixel import Neopixel, NeopixelSchema, GREEN, BLACK
 
@@ -14,7 +15,6 @@ class Strip(Resource):
 
     def get(self):
         neopixels = self.db.neopixel.find({})
-        print(neopixels)
         neopixel_schema = NeopixelSchema(many=True)
         res = neopixel_schema.dump(neopixels)
         return res
@@ -26,27 +26,23 @@ class Strip(Resource):
         init_request_parser.add_argument('brightness', type=str, default='0.2')
         args = init_request_parser.parse_args()
 
-        new_strip = Neopixel(strip_id, 
-                            'strip',
+        new_strip = Neopixel('strip',
                             args['pin'],
                             args['num_pixels'],
                             args['brightness'])
         
         neopixel_schema = NeopixelSchema()
 
-        self.db.neopixel.insert(neopixel_schema.dump(new_strip))
+        self.db.neopixel.insert_one(neopixel_schema.dump(new_strip).data)
                             
-        # strips.append(new_strip)
-        # strip_id += 1
-        
-        for i in range(0, 3):
-            new_strip.fill_blink(GREEN, 0.15)
+        # for i in range(0, 3):
+        #     new_strip.fill_blink(GREEN, 0.15)
 
         return 200
 
     def put(self):
         set_pixel_parser = RequestParser(bundle_errors=True)
-        set_pixel_parser.add_argument('id', type=int, required=True)
+        set_pixel_parser.add_argument('_id', required=True)
         set_pixel_parser.add_argument('index_start', type=int, required=True)
         set_pixel_parser.add_argument('index_end', type=int, required=True)
         set_pixel_parser.add_argument('r', type=int, required=True)
@@ -54,13 +50,26 @@ class Strip(Resource):
         set_pixel_parser.add_argument('b', type=int, required=True)
         args = set_pixel_parser.parse_args()
 
-        new_color = (args['r'], args['g'], args['b'])
+        new_color = [args['r'], args['g'], args['b']]
         
-        neopixel = strips[args['id']]
+        # neopixel = strips[args['id']]
 
         for i in range(args['index_start'], args['index_end'] + 1):
-            neopixel.pixels[i].color = new_color # Index out of range error can happen here until index vals are checked.
-            neopixel.show_colors()
+            pixel = 'pixels.{}'.format(i)
+            query = {
+                '_id': ObjectId(args['_id'])
+            }
+            update = {
+                '$set': {
+                    pixel: {
+                        'color': new_color
+                    }
+                }
+            }
+            print(update)
+            self.db.neopixel.update_one(query, update)
+            # neopixel.pixels[i].color = new_color # Index out of range error can happen here until index vals are checked.
+            # neopixel.show_colors()
 
         return 200
 
