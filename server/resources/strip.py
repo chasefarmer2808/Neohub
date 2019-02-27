@@ -30,14 +30,12 @@ class Strip(Resource):
                             args['pin'],
                             args['num_pixels'],
                             args['brightness'])
+        new_strip.init_pixels(BLACK)
         
         neopixel_schema = NeopixelSchema()
 
         self.db.neopixel.insert_one(neopixel_schema.dump(new_strip).data)
                             
-        # for i in range(0, 3):
-        #     new_strip.fill_blink(GREEN, 0.15)
-
         return 200
 
     def put(self):
@@ -52,13 +50,13 @@ class Strip(Resource):
 
         new_color = [args['r'], args['g'], args['b']]
         
-        # neopixel = strips[args['id']]
+        query = {
+            '_id': ObjectId(args['_id'])
+        }
 
         for i in range(args['index_start'], args['index_end'] + 1):
             pixel = 'pixels.{}'.format(i)
-            query = {
-                '_id': ObjectId(args['_id'])
-            }
+            
             update = {
                 '$set': {
                     pixel: {
@@ -66,10 +64,13 @@ class Strip(Resource):
                     }
                 }
             }
-            print(update)
+            
             self.db.neopixel.update_one(query, update)
-            # neopixel.pixels[i].color = new_color # Index out of range error can happen here until index vals are checked.
-            # neopixel.show_colors()
+        
+        neopixel = self.db.neopixel.find_one(query)
+        neopixel_obj = NeopixelSchema().load(neopixel).data
+        print(neopixel_obj.pixels)
+        neopixel_obj.draw()
 
         return 200
 
