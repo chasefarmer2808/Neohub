@@ -5,7 +5,7 @@ from flask_marshmallow import Marshmallow
 from flask_pymongo import PyMongo
 
 from resources.strip import Strip
-from resources.animation import Animation
+# from resources.animation import Animation
 
 app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/neohub'
@@ -14,7 +14,7 @@ api = Api(app)
 ma = Marshmallow(app)
 
 api.add_resource(Strip, '/api/strip', resource_class_args=[mongo])
-api.add_resource(Animation, '/api/animation')
+# api.add_resource(Animation, '/api/animation')
 
 cors = CORS(app, resources={r'/api/*': {'origins': '*'}})
 

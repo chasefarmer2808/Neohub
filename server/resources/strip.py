@@ -1,12 +1,9 @@
-import board
 from flask_restful import Resource, marshal_with
 from flask_restful.reqparse import RequestParser
 from bson.objectid import ObjectId
 
 from schemas.neopixel import Neopixel, NeopixelSchema, GREEN, BLACK
-
-strips = []
-strip_id = 0
+from neopixel.neopixel_thread import NeopixelThread
 
 
 class Strip(Resource):
@@ -30,12 +27,16 @@ class Strip(Resource):
                             args['pin'],
                             args['num_pixels'],
                             args['brightness'])
-        new_strip.init_pixels(BLACK)
         
         neopixel_schema = NeopixelSchema()
 
         self.db.neopixel.insert_one(neopixel_schema.dump(new_strip).data)
                             
+        NeopixelThread(
+            args['pin'],
+            args['num_pixels'],
+            args['brightness']).start()
+        
         return 200
 
     def put(self):

@@ -1,5 +1,3 @@
-import board
-import neopixel
 import time
 import json
 from pathlib import Path
@@ -18,37 +16,21 @@ class Neopixel(object):
         self.pin = pin
         self.num_pixels = num_pixels
         self.brightness = float(brightness)
-        self.neopixel = neopixel.NeoPixel(self.get_gpio_pin(), self.num_pixels, brightness=self.brightness, auto_write=True)    
 
         try:
             self.pixels = kwargs['pixels']
         except KeyError:
             self.pixels = []
+            self.init_pixels()
 
         try:
             self.animations = kwargs['animations']
         except KeyError:
             self.animations = []
 
-    def init_pixels(self, color):
+    def init_pixels(self):
         for i in range(0, self.num_pixels):
             self.pixels.append(Pixel())
-
-    def draw(self):
-        for i in range(0, self.num_pixels):
-            self.neopixel[i] = tuple(self.pixels[i]['color'])
-
-    def get_gpio_pin(self):
-        if self.pin == '18':
-            return board.D18
-        else:
-            raise ValueError
-
-    # def fill_blink(self, color, delay):
-    #     self.neopixel.fill(color)
-    #     time.sleep(delay)
-    #     self.neopixel.fill(BLACK)
-    #     time.sleep(delay)
 
 class NeopixelSchema(Schema):
     # _id = fields.String()
