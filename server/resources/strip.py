@@ -1,9 +1,10 @@
+import threading
 from flask_restful import Resource, marshal_with
 from flask_restful.reqparse import RequestParser
 from bson.objectid import ObjectId
 
 from schemas.neopixel import Neopixel, NeopixelSchema, GREEN, BLACK
-from neopixel.neopixel_thread import NeopixelThread
+from neopixel_utils.neopixel_thread import NeopixelThread
 
 
 class Strip(Resource):
@@ -32,10 +33,12 @@ class Strip(Resource):
 
         self.db.neopixel.insert_one(neopixel_schema.dump(new_strip).data)
                             
-        NeopixelThread(
+        neo_thread = NeopixelThread(
             args['pin'],
             args['num_pixels'],
-            args['brightness']).start()
+            args['brightness'],
+            new_strip.pixels)
+        neo_thread.start()
         
         return 200
 
@@ -70,8 +73,15 @@ class Strip(Resource):
         
         neopixel = self.db.neopixel.find_one(query)
         neopixel_obj = NeopixelSchema().load(neopixel).data
-        print(neopixel_obj.pixels)
-        neopixel_obj.draw()
+
+        for thread in threading.enumerate():
+            print(thread)
+            if type(thread) is NeopixelThread:
+                thread.pixels = neopixel_obj.pixels
+                print(thread.pixels)
+        # print(neopixel_obj.pixels)
+        # neopixel_obj.draw()
+
 
         return 200
 

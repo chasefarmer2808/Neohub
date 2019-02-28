@@ -1,3 +1,5 @@
+import threading
+import atexit
 from flask import Flask, render_template, redirect, url_for
 from flask_cors import CORS
 from flask_restful import Api
@@ -5,6 +7,17 @@ from flask_marshmallow import Marshmallow
 from flask_pymongo import PyMongo
 
 from resources.strip import Strip
+from neopixel_utils.neopixel_thread import NeopixelThread
+
+@atexit.register
+def release_neopixels():
+    print('here')
+    for thread in threading.enumerate():
+        if type(thread) is NeopixelThread:
+            print(thread)
+            thread.stop_flag = True
+            thread.join()
+
 # from resources.animation import Animation
 
 app = Flask(__name__)
@@ -17,6 +30,15 @@ api.add_resource(Strip, '/api/strip', resource_class_args=[mongo])
 # api.add_resource(Animation, '/api/animation')
 
 cors = CORS(app, resources={r'/api/*': {'origins': '*'}})
+
+for doc in mongo.db.neopixel.find():
+    print(doc)
+    NeopixelThread(
+        doc['pin'],
+        doc['num_pixels'],
+        doc['brightness'],
+        doc['pixels']
+    ).start()
 
 @app.route('/')
 def home():
