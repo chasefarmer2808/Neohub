@@ -1,5 +1,6 @@
 import threading
 import atexit
+import os
 from flask import Flask, render_template, redirect, url_for
 from flask_cors import CORS
 from flask_restful import Api
@@ -18,8 +19,10 @@ def release_neopixels():
 
 # from resources.animation import Animation
 
+db_hostname = os.getenv('MONGO_HOST', 'localhost')
+
 app = Flask(__name__)
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/neohub'
+app.config['MONGO_URI'] = 'mongodb://{}:27017/neohub'.format(db_hostname)
 mongo = PyMongo(app)
 api = Api(app)
 ma = Marshmallow(app)

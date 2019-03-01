@@ -32,9 +32,8 @@ class Strip(Resource):
                             args['brightness'])
         
         neopixel_schema = NeopixelSchema()
-        pixel_schema = PixelSchema()
-        pixel_dict = pixel_schema.dump(new_strip.pixels).data
-        print(pixel_dict)
+        pixel_schema = PixelSchema(many=True)
+        pixels = pixel_schema.dump(new_strip.pixels).data
 
         self.db.neopixel.insert_one(neopixel_schema.dump(new_strip).data)
                             
@@ -42,7 +41,7 @@ class Strip(Resource):
             args['pin'],
             args['num_pixels'],
             args['brightness'],
-            pixel_dict)
+            pixels)
         neo_thread.start()
         
         return 200
