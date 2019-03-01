@@ -82,23 +82,23 @@ class Strip(Resource):
             neo_thread.pixels = neopixel['pixels']
         
         neo_thread.update_flag = True
-        
+
         return 200
 
     def delete(self):
-        global strips
-
         delete_strip_parser = RequestParser(bundle_errors=True)
-        delete_strip_parser.add_argument('id', type=int, required=True)
+        delete_strip_parser.add_argument('_id', required=True)
         args = delete_strip_parser.parse_args()
 
-        strip_id = args['id']
+        query = {
+            '_id': ObjectId(args['_id'])
+        }
 
-        selected_neopixel = [pixel for pixel in strips if pixel.id == strip_id]
+        self.db.neopixel.delete_one(query)
 
-        if len(selected_neopixel):
-            selected_neopixel[0].updateAllPixels(BLACK)
-            selected_neopixel[0].neopixel.fill(BLACK)
-            return 200
+        for thread in threading.enumerate():
+            if type(thread) is NeopixelThread:
+                thread.stop_flag = True
+                thread.join(1)
         
-        return 404
+        return 200
