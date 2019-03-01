@@ -2,8 +2,10 @@ import threading
 from flask_restful import Resource, marshal_with
 from flask_restful.reqparse import RequestParser
 from bson.objectid import ObjectId
+from pymongo import ReturnDocument
 
 from schemas.neopixel import Neopixel, NeopixelSchema, GREEN, BLACK
+from schemas.pixel import Pixel, PixelSchema
 from neopixel_utils.neopixel_thread import NeopixelThread
 
 
@@ -30,6 +32,9 @@ class Strip(Resource):
                             args['brightness'])
         
         neopixel_schema = NeopixelSchema()
+        pixel_schema = PixelSchema()
+        pixel_dict = pixel_schema.dump(new_strip.pixels).data
+        print(pixel_dict)
 
         self.db.neopixel.insert_one(neopixel_schema.dump(new_strip).data)
                             
@@ -37,7 +42,7 @@ class Strip(Resource):
             args['pin'],
             args['num_pixels'],
             args['brightness'],
-            new_strip.pixels)
+            pixel_dict)
         neo_thread.start()
         
         return 200
@@ -58,6 +63,10 @@ class Strip(Resource):
             '_id': ObjectId(args['_id'])
         }
 
+        for thread in threading.enumerate():
+            if type(thread) is NeopixelThread:
+                neo_thread = thread
+
         for i in range(args['index_start'], args['index_end'] + 1):
             pixel = 'pixels.{}'.format(i)
             
@@ -69,20 +78,11 @@ class Strip(Resource):
                 }
             }
             
-            self.db.neopixel.update_one(query, update)
+            neopixel = self.db.neopixel.find_one_and_update(query, update, return_document=ReturnDocument.AFTER)
+            neo_thread.pixels = neopixel['pixels']
         
-        neopixel = self.db.neopixel.find_one(query)
-        neopixel_obj = NeopixelSchema().load(neopixel).data
-
-        for thread in threading.enumerate():
-            print(thread)
-            if type(thread) is NeopixelThread:
-                thread.pixels = neopixel_obj.pixels
-                print(thread.pixels)
-        # print(neopixel_obj.pixels)
-        # neopixel_obj.draw()
-
-
+        neo_thread.update_flag = True
+        
         return 200
 
     def delete(self):

@@ -11,12 +11,10 @@ from neopixel_utils.neopixel_thread import NeopixelThread
 
 @atexit.register
 def release_neopixels():
-    print('here')
     for thread in threading.enumerate():
         if type(thread) is NeopixelThread:
-            print(thread)
             thread.stop_flag = True
-            thread.join()
+            thread.join(1)
 
 # from resources.animation import Animation
 
@@ -32,7 +30,6 @@ api.add_resource(Strip, '/api/strip', resource_class_args=[mongo])
 cors = CORS(app, resources={r'/api/*': {'origins': '*'}})
 
 for doc in mongo.db.neopixel.find():
-    print(doc)
     NeopixelThread(
         doc['pin'],
         doc['num_pixels'],
