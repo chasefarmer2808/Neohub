@@ -14,7 +14,7 @@ services:
   db:
     image: andresvidal/rpi3-mongodb3:latest
     restart: unless-stopped
-    command: mongod
+    command: mongod --journal
     ports:
       - "27017:27017"
       - "28017:28017"
