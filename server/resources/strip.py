@@ -23,8 +23,14 @@ class Strip(Resource):
         init_request_parser = RequestParser(bundle_errors=True)
         init_request_parser.add_argument('pin', type=str, required=True)
         init_request_parser.add_argument('num_pixels', type=int, required=True)
-        init_request_parser.add_argument('brightness', type=str, default='0.2')
+        init_request_parser.add_argument('brightness', type=float, default=0.2)
         args = init_request_parser.parse_args()
+
+        if args['brightness'] == 0.0:
+            return 500
+
+        if args['brightness'] > 1.0:
+            args['brightness'] = 1.0
 
         new_strip = Neopixel('strip',
                             args['pin'],
@@ -35,16 +41,20 @@ class Strip(Resource):
         pixel_schema = PixelSchema(many=True)
         pixels = pixel_schema.dump(new_strip.pixels).data
 
-        self.db.neopixel.insert_one(neopixel_schema.dump(new_strip).data)
-                            
         neo_thread = NeopixelThread(
             args['pin'],
             args['num_pixels'],
             args['brightness'],
             pixels)
         neo_thread.start()
+
+        new_strip.thread_id = neo_thread.id
+
+        _id = self.db.neopixel.insert_one(neopixel_schema.dump(new_strip).data).inserted_id
         
-        return 200
+        neo_thread.blink(3, 0.15)
+        
+        return str(_id)
 
     def put(self):
         set_pixel_parser = RequestParser(bundle_errors=True)
@@ -62,9 +72,18 @@ class Strip(Resource):
             '_id': ObjectId(args['_id'])
         }
 
+        neopixel = self.db.neopixel.find_one(query)
+
+        if not neopixel:
+            return 404
+
         for thread in threading.enumerate():
             if type(thread) is NeopixelThread:
-                neo_thread = thread
+                if thread.id == neopixel['thread_id']:
+                    neo_thread = thread
+
+        if not neo_thread:
+            return 404
 
         for i in range(args['index_start'], args['index_end'] + 1):
             pixel = 'pixels.{}'.format(i)
@@ -78,6 +97,7 @@ class Strip(Resource):
             }
             
             neopixel = self.db.neopixel.find_one_and_update(query, update, return_document=ReturnDocument.AFTER)
+
             neo_thread.pixels = neopixel['pixels']
         
         neo_thread.update_flag = True
@@ -93,11 +113,18 @@ class Strip(Resource):
             '_id': ObjectId(args['_id'])
         }
 
-        self.db.neopixel.delete_one(query)
+        neopixel = self.db.neopixel.find_one(query)
+        
+        self.db.neopixel.delete_one(query).raw_result
+        print(neopixel)
+
+        if not neopixel:
+            return 404
 
         for thread in threading.enumerate():
             if type(thread) is NeopixelThread:
-                thread.stop_flag = True
-                thread.join(1)
+                if thread.id == neopixel['thread_id']:
+                    thread.stop_flag = True
+                    thread.join(1)
         
         return 200

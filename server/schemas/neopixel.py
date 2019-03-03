@@ -12,6 +12,7 @@ BLACK = (0, 0, 0)
 
 class Neopixel(object):
     def __init__(self, type, pin, num_pixels, brightness, **kwargs):
+        self.thread_id = 0
         self.type = type
         self.pin = pin
         self.num_pixels = num_pixels
@@ -33,7 +34,7 @@ class Neopixel(object):
             self.pixels.append(Pixel())
 
 class NeopixelSchema(Schema):
-    # _id = fields.String()
+    thread_id = fields.Integer()
     type = fields.String()
     pin = fields.String()
     num_pixels = fields.Integer()
