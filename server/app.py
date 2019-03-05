@@ -34,6 +34,7 @@ cors = CORS(app, resources={r'/api/*': {'origins': '*'}})
 
 for doc in mongo.db.neopixel.find():
     NeopixelThread(
+        str(doc['_id']),
         doc['pin'],
         doc['num_pixels'],
         doc['brightness'],

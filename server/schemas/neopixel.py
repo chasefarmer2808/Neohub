@@ -12,11 +12,10 @@ BLACK = (0, 0, 0)
 
 class Neopixel(object):
     def __init__(self, type, pin, num_pixels, brightness, **kwargs):
-        self.thread_id = 0
         self.type = type
         self.pin = pin
         self.num_pixels = num_pixels
-        self.brightness = float(brightness)
+        self.brightness = brightness
 
         try:
             self.pixels = kwargs['pixels']
@@ -34,11 +33,11 @@ class Neopixel(object):
             self.pixels.append(Pixel())
 
 class NeopixelSchema(Schema):
-    thread_id = fields.Integer()
+    _id = fields.String()
     type = fields.String()
-    pin = fields.String()
+    pin = fields.Integer()
     num_pixels = fields.Integer()
-    brightness = fields.Float()
+    brightness = fields.Integer()
     pixels = fields.Nested(PixelSchema, many=True)
     animations = fields.List(fields.String())
 
