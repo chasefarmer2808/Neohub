@@ -1,11 +1,9 @@
 from project.schemas.neopixel import Neopixel
 
-def test_new_neopixel():
-    neopixel = Neopixel('strip', 18, 6, 0.2)
-
-    assert neopixel.type == 'strip'
-    assert neopixel.pin == 18
-    assert neopixel.num_pixels == 6
-    assert neopixel.brightness == 0.2
-    assert neopixel.animations == []
-    assert len(neopixel.pixels) == 6
+def test_new_neopixel(new_neopixel):
+    assert new_neopixel.type == 'strip'
+    assert new_neopixel.pin == 18
+    assert new_neopixel.num_pixels == 6
+    assert new_neopixel.brightness == 0.2
+    assert new_neopixel.animations == []
+    assert len(new_neopixel.pixels) == 6
