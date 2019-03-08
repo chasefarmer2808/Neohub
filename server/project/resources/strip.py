@@ -14,7 +14,18 @@ class Strip(Resource):
         self.db = db.db
 
     def get(self):
-        neopixels = self.db.neopixel.find({})
+        get_strip_parser = RequestParser(bundle_errors=True)
+        get_strip_parser.add_argument('_id')
+        args = get_strip_parser.parse_args()
+
+        query = {}
+
+        if args['_id'] is not None:
+            query = {
+                '_id': ObjectId(args['_id'])
+            }
+
+        neopixels = self.db.neopixel.find(query)
         neopixel_schema = NeopixelSchema(many=True)
         res = neopixel_schema.dump(neopixels)
         return res
