@@ -2,9 +2,9 @@
   <div class="items-container" id="neopixels-container">
     <mat-card class="card-container" id="neopixel-card" *ngFor="let neopixel of neopixels; let id = index">
       <mat-card-header id="neopixel-card-header">
-        <mat-card-title>{{neopixel.id}}</mat-card-title>
+        <mat-card-title>{{neopixel._id}}</mat-card-title>
         <div id="neopixel-actions">
-          <button id="clear-button" (click)="clearNeopixel(neopixel.id)" mat-raised-button color="primary">
+          <button id="clear-button" (click)="deleteNeopixel(neopixel)" mat-raised-button color="primary">
             Clear
           </button>
         </div>

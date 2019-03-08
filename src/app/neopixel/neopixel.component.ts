@@ -71,16 +71,25 @@ export class NeopixelComponent implements OnInit {
       });
   }
 
-  clearNeopixel(neopixelId: number) {
-    this.neopixelService.clearNeopixel(neopixelId).subscribe(
+  deleteNeopixel(neopixel: Neopixel) {
+    this.neopixelService.deleteNeopixel(neopixel._id).subscribe(
       (data) => {
         console.log(data);
-        this.fillNeopixel(neopixelId, BLACK);
+        this.neopixelDataSource.loadNeopixels();
+        this.spliceNeopixel(neopixel);
       },
       (err) => {
         console.error(err);
       }
     )
+  }
+
+  spliceNeopixel(neopixel: Neopixel) {
+    const index: number = this.neopixels.indexOf(neopixel);
+
+    if (index !== -1) {
+      this.neopixels.splice(index, 1);
+    }
   }
 
   decimalArrayToRGB(colors: number[]): string {

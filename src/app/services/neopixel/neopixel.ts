@@ -2,7 +2,7 @@ import { Pixel } from './pixel';
 import { Animation } from '../animation/animation';
 
 export class Neopixel {
-    id: string;
+    _id: string;
     type: string;
     numPixels: string;
     gpioPin: string;

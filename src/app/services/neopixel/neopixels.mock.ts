@@ -2,7 +2,7 @@ import { Neopixel } from './neopixel';
 
 export const NeopixelsMock: Neopixel[] = [
     {
-        id: '0',
+        _id: '0',
         type: 'strip',
         numPixels: '3',
         gpioPin: '15',

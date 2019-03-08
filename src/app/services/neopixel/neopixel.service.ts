@@ -31,7 +31,7 @@ export class NeopixelService {
 
   getNeopixels(): Observable<Neopixel[]> {
     return this.http
-      .get<Neopixel[]>('http://192.168.0.106:5000/api/strip')
+      .get<Neopixel[]>(`${environment.neopixelUrl}`)
       .pipe(
         catchError(this.handleObservableError)
       );
@@ -46,9 +46,9 @@ export class NeopixelService {
       );
   }
 
-  clearNeopixel(neopixelId: Number): Observable<any> {
+  deleteNeopixel(neopixelId: String): Observable<any> {
     return this.http
-      .delete<any>(`http://192.168.0.106:5000/api/strip?id=${neopixelId}`)
+      .delete<any>(`${environment.neopixelUrl}?id=${neopixelId}`)
       .pipe(
         catchError(this.handleObservableError)
       );
