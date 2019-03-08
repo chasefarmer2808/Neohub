@@ -6,6 +6,8 @@ import { catchError } from 'rxjs/operators';
 import { Neopixel } from './neopixel';
 import { Pixel } from './pixel';
 
+import { environment } from '../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,9 +15,15 @@ export class NeopixelService {
 
   constructor(private http: HttpClient) { }
 
-  createNeopixel(newNeoPixel: Neopixel): Observable<Neopixel> {
+  createNeopixel(newNeoPixel: Neopixel): Observable<String> {
+    let data = {
+      pin: newNeoPixel.gpioPin,
+      num_pixels: newNeoPixel.numPixels,
+      brightness: 60
+    };
+
     return this.http
-      .post<Neopixel>(`http://192.168.0.106:5000/api/strip?pin=${newNeoPixel.gpioPin}&num_pixels=${newNeoPixel.numPixels}`, {})
+      .post<String>(`${environment.neopixelUrl}`, data)
       .pipe(
         catchError(this.handleObservableError)
       );

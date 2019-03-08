@@ -2,8 +2,12 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+let RPI_IP = '192.168.0.106';
+let RPI_PORT = '5000'
+
 export const environment = {
-  production: false
+  production: false,
+  neopixelUrl: `http://${RPI_IP}:${RPI_PORT}/api/strip`
 };
 
 /*
