@@ -30,7 +30,8 @@ export class AddNeopixelDialogComponent implements OnInit {
     this.addNeopixelForm = new FormGroup({
       pixelType: new FormControl(this.pixelTypeOptions[0], [Validators.required]),
       numPixels: new FormControl(64, [Validators.required, Validators.min(1), Validators.pattern(numbersOnlyRegex)]),
-      gpioPin: new FormControl(this.gpioPinOptions[2], [Validators.required, Validators.pattern(numbersOnlyRegex)]) // GPIO 18 is standard per the Circuit Python docs.
+      gpioPin: new FormControl(this.gpioPinOptions[2], [Validators.required, Validators.pattern(numbersOnlyRegex)]), // GPIO 18 is standard per the Circuit Python docs.
+      brightness: new FormControl(60, [Validators.min(1), Validators.max(255), Validators.pattern(numbersOnlyRegex)])
     });
   }
 
