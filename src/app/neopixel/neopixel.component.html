@@ -4,9 +4,14 @@
       <mat-card-header id="neopixel-card-header">
         <mat-card-title>{{neopixel._id}}</mat-card-title>
         <div id="neopixel-actions">
-          <button id="clear-button" (click)="deleteNeopixel(neopixel)" mat-raised-button color="primary">
-            Clear
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
           </button>
+          <mat-menu #menu="matMenu">
+            <button id="clear-button" (click)="deleteNeopixel(neopixel)" mat-menu-item>
+              <span>Delete</span>
+            </button>
+          </mat-menu>
         </div>
       </mat-card-header>
       <mat-card-content>
