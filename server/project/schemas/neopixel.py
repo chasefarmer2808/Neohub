@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 
 from marshmallow import Schema, fields, post_load
-from schemas.pixel import Pixel, PixelSchema
+from project.schemas.pixel import Pixel, PixelSchema
 
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)

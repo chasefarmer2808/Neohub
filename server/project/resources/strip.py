@@ -4,9 +4,9 @@ from flask_restful.reqparse import RequestParser
 from bson.objectid import ObjectId
 from pymongo import ReturnDocument
 
-from schemas.neopixel import Neopixel, NeopixelSchema, GREEN, BLACK
-from schemas.pixel import Pixel, PixelSchema
-from neopixel_utils.neopixel_thread import NeopixelThread
+from project.schemas.neopixel import Neopixel, NeopixelSchema, GREEN, BLACK
+from project.schemas.pixel import Pixel, PixelSchema
+from project.neopixel_utils.neopixel_thread import NeopixelThread
 
 
 class Strip(Resource):
