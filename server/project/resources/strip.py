@@ -71,6 +71,15 @@ class Strip(Resource):
         set_pixel_parser.add_argument('g', type=int, required=True)
         set_pixel_parser.add_argument('b', type=int, required=True)
         args = set_pixel_parser.parse_args()
+
+        if args['r'] > 255:
+            args['r'] = 255
+
+        if args['g'] > 255:
+            args['g'] = 255
+
+        if args['b'] > 255:
+            args['b'] = 255
         
         neo_thread = None
         new_color = [args['r'], args['g'], args['b']]
