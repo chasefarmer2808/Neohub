@@ -20,17 +20,6 @@ def create_app(config_filename=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_pyfile(config_filename)
 
-    api.add_resource(Strip, '/api/strip', resource_class_args=[mongo])
-
-    @app.route('/')
-    def home():
-        return render_template('index.html')
-
-    @app.route('/', defaults={'path': ''})
-    @app.route('/<path:path>')
-    def redirect_home(path):
-        return redirect(url_for('home'))
-
     initialize_extentions(app)
     return app
 
@@ -39,6 +28,8 @@ def initialize_extentions(app):
     api = Api(app)
     ma = Marshmallow(app)
     cors = CORS(app, resources={r'/api/*': {'origins': '*'}})
+
+    api.add_resource(Strip, '/api/strip', resource_class_args=[mongo])
 
     initialize_neopixel_threads(app, mongo)
 
