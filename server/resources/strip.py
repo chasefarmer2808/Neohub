@@ -27,7 +27,7 @@ class Strip(Resource):
         args = init_request_parser.parse_args()
 
         if args['brightness'] == 0:
-            return 500
+            return 'Invalid brightness', 500
 
         if args['brightness'] > 255:
             args['brightness'] = 255
