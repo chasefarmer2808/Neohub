@@ -80,8 +80,7 @@ class Strip(Resource):
     def put(self):
         set_pixel_parser = RequestParser(bundle_errors=True)
         set_pixel_parser.add_argument('_id', required=True)
-        set_pixel_parser.add_argument('index_start', type=int, required=True)
-        set_pixel_parser.add_argument('index_end', type=int, required=True)
+        set_pixel_parser.add_argument('index', type=int, required=True)
         set_pixel_parser.add_argument('r', type=int, required=True)
         set_pixel_parser.add_argument('g', type=int, required=True)
         set_pixel_parser.add_argument('b', type=int, required=True)
@@ -111,20 +110,19 @@ class Strip(Resource):
         if not neo_thread:
             return 404
 
-        for i in range(args['index_start'], args['index_end'] + 1):
-            pixel = 'pixels.{}'.format(i)
-            
-            update = {
-                '$set': {
-                    pixel: {
-                        'color': new_color
-                    }
+        pixel = 'pixels.{}'.format(args['index'])
+        
+        update = {
+            '$set': {
+                pixel: {
+                    'color': new_color
                 }
             }
-            
-            neopixel = self.db.neopixel.find_one_and_update(query, update, return_document=ReturnDocument.AFTER)
+        }
+        
+        neopixel = self.db.neopixel.find_one_and_update(query, update, return_document=ReturnDocument.AFTER)
 
-            neo_thread.pixels = neopixel['pixels']
+        neo_thread.pixels = neopixel['pixels']
         
         update_event.set()
 
