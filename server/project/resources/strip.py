@@ -34,7 +34,7 @@ class Strip(Resource):
         init_request_parser = RequestParser(bundle_errors=True)
         init_request_parser.add_argument('pin', type=int, required=True)
         init_request_parser.add_argument('num_pixels', type=int, required=True)
-        init_request_parser.add_argument('brightness', type=int, default=0.2)
+        init_request_parser.add_argument('brightness', type=int, default=60)
         args = init_request_parser.parse_args()
 
         if args['brightness'] == 0:
@@ -128,11 +128,11 @@ class Strip(Resource):
 
     def delete(self):
         delete_strip_parser = RequestParser(bundle_errors=True)
-        delete_strip_parser.add_argument('_id', required=True)
+        delete_strip_parser.add_argument('id', required=True)
         args = delete_strip_parser.parse_args()
 
         query = {
-            '_id': ObjectId(args['_id'])
+            '_id': ObjectId(args['id'])
         }
 
         neopixel = self.db.neopixel.find_one(query)
@@ -144,7 +144,7 @@ class Strip(Resource):
 
         for thread in threading.enumerate():
             if type(thread) is NeopixelThread:
-                if thread.id == args['_id']:
+                if thread.id == args['id']:
                     thread.stop_flag = True
                     thread.join()
         
