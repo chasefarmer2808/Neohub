@@ -23,6 +23,7 @@ export class NeopixelComponent implements OnInit {
   neopixels: Neopixel[];
   neopixelDataSource: NeopixelDataSource;
   selectedPixels: SelectionModel<Pixel>;
+  selectMode: boolean = false;
   selectedAnimIndex: number = 0;
 
   constructor(private addNeopixelDialog: MatDialog,
@@ -121,6 +122,10 @@ export class NeopixelComponent implements OnInit {
     for (let pixel of neopixel.pixels) {
       pixel.color = color;
     }
+  }
+
+  printSelected() {
+    console.log(this.selectedPixels);
   }
 
 }
