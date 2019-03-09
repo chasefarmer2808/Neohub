@@ -36,7 +36,7 @@
     margin: 8px;
 }
 
-.action-menu {
+/deep/ .mat-menu-content {
     background-color: #c2185b !important;
 }
 
