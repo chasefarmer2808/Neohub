@@ -149,6 +149,7 @@ class Strip(Resource):
         for thread in threading.enumerate():
             if type(thread) is NeopixelThread:
                 if thread.id == args['id']:
+                    update_event.set()
                     thread.stop_flag = True
                     thread.join()
         
