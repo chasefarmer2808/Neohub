@@ -11,7 +11,7 @@ LED_INVERT     = False   # True to invert the signal (when using NPN transistor 
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
 class NeopixelThread(threading.Thread):
-    def __init__(self, _id, pin, num_pixels, brightness, pixels):
+    def __init__(self, _id, pin, num_pixels, brightness, pixels, update_event):
         threading.Thread.__init__(self)
         self.id = _id
         self.pin = pin
@@ -20,7 +20,8 @@ class NeopixelThread(threading.Thread):
         self.neopixel = Adafruit_NeoPixel(self.num_pixels, self.pin, LED_FREQ_HZ, LED_DMA, LED_INVERT, self.brightness, LED_CHANNEL)
         self.pixels = pixels
         self.stop_flag = False
-        self.update_flag = True
+
+        self.update_event = update_event
 
         self.neopixel.begin()
         self.blink(3, 0.15)
@@ -28,9 +29,9 @@ class NeopixelThread(threading.Thread):
 
     def run(self):
         while not self.stop_flag:
-            if self.update_flag:
-                self.update()
-                self.update_flag = False
+            self.update_event.wait()
+            self.update()
+            self.update_event.clear()
         self.fill(BLACK)
     
     def update(self):

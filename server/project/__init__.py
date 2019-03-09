@@ -7,7 +7,7 @@ from flask_restful import Api
 from flask_marshmallow import Marshmallow
 from flask_pymongo import PyMongo
 
-from project.resources.strip import Strip
+from project.resources.strip import Strip, update_event
 from project.neopixel_utils.neopixel_thread import NeopixelThread
 
 db_hostname = os.getenv('MONGO_HOST', 'localhost')
@@ -40,5 +40,6 @@ def initialize_neopixel_threads(app, db):
             doc['pin'],
             doc['num_pixels'],
             doc['brightness'],
-            doc['pixels']
+            doc['pixels'],
+            update_event
         ).start()

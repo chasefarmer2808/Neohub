@@ -1,4 +1,5 @@
 import threading
+from threading import Event
 from flask_restful import Resource, marshal_with
 from flask_restful.reqparse import RequestParser
 from bson.objectid import ObjectId
@@ -7,6 +8,8 @@ from pymongo import ReturnDocument
 from project.schemas.neopixel import Neopixel, NeopixelSchema, GREEN, BLACK
 from project.schemas.pixel import Pixel, PixelSchema
 from project.neopixel_utils.neopixel_thread import NeopixelThread
+
+update_event = Event()
 
 
 class Strip(Resource):
@@ -60,7 +63,8 @@ class Strip(Resource):
             args['pin'],
             args['num_pixels'],
             args['brightness'],
-            pixels)
+            pixels,
+            update_event)
 
         try:
             neo_thread.start()
@@ -122,7 +126,7 @@ class Strip(Resource):
 
             neo_thread.pixels = neopixel['pixels']
         
-        neo_thread.update_flag = True
+        update_event.set()
 
         return 200
 
