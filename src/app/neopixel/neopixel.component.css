@@ -40,6 +40,11 @@
     background-color: #c2185b !important;
 }
 
+#delete-neopixel-action {
+    display: flex;
+    align-items: center;
+}
+
 #animation-title {
     margin: 16px;
 }
