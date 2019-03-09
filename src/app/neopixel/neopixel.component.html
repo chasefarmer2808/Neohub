@@ -2,17 +2,17 @@
   <div class="items-container" id="neopixels-container">
     <mat-card class="card-container" id="neopixel-card" *ngFor="let neopixel of neopixels; let id = index">
       <mat-card-header id="neopixel-card-header">
-        <mat-card-title>{{neopixel._id}}</mat-card-title>
         <div id="neopixel-actions">
           <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
           </button>
-          <mat-menu #menu="matMenu">
+          <mat-menu class="action-menu" #menu="matMenu" xPosition="before">
             <button id="clear-button" (click)="deleteNeopixel(neopixel)" mat-menu-item>
               <span>Delete</span>
             </button>
           </mat-menu>
         </div>
+        <mat-card-title>{{neopixel._id}}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div class="items-container items-container-row">

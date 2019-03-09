@@ -15,9 +15,14 @@
     margin: 8px;
 }
 
+#neopixel-card-header {
+    display: flex;
+    justify-content: center;
+}
+
 #neopixel-actions {
     position: absolute;
-    right:0;
+    left:0;
     top:0;
 }
 
@@ -29,6 +34,10 @@
 
 .neopixel-action {
     margin: 8px;
+}
+
+.action-menu {
+    background-color: #c2185b !important;
 }
 
 #animation-title {
