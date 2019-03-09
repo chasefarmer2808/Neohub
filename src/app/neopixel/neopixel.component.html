@@ -7,6 +7,10 @@
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu class="action-menu" #menu="matMenu" xPosition="before">
+            <button id="clear-neopixel-action" (click)="clearNeopixel(neopixel)" mat-menu-item>
+              <mat-icon>clear_all</mat-icon>
+              <span class="menu-action-text">Clear</span>
+            </button>
             <button id="delete-neopixel-action" (click)="deleteNeopixel(neopixel)" mat-menu-item>
               <mat-icon>delete</mat-icon>
               <span class="menu-action-text">Delete</span>

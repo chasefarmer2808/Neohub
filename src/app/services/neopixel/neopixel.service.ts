@@ -50,14 +50,31 @@ export class NeopixelService {
       );
   }
 
-  updatePixel(pixel: Pixel): Observable<any> {
+  updatePixel(pixel: Pixel, color: number[]): Observable<any> {
     let data = {
       _id: pixel.neopixelId,
       index_start: pixel.index,
       index_end: pixel.index,
-      r: pixel.color[0],
-      g: pixel.color[1],
-      b: pixel.color[2]
+      r: color[0],
+      g: color[1],
+      b: color[2]
+    };
+
+    return this.http
+      .put<any>(`${environment.neopixelUrl}`, data)
+      .pipe(
+        catchError(this.handleObservableError)
+      );
+  }
+
+  updatePixels(neopixelId: string, indexStart: number, indexEnd: number, color: number[]) {
+    let data = {
+      _id: neopixelId,
+      index_start: indexStart,
+      index_end: indexEnd,
+      r: color[0],
+      g: color[1],
+      b: color[2]
     };
 
     return this.http

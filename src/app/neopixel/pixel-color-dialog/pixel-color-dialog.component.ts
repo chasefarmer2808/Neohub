@@ -25,9 +25,10 @@ export class PixelColorDialogComponent implements OnInit {
 
   updatePixel(evt: string) {
     let rgb = this.rgbToDecimalArray(evt);
-    this.selectedPixel.color = rgb;
-    this.neoPixelService.updatePixel(this.selectedPixel).subscribe(
+    
+    this.neoPixelService.updatePixel(this.selectedPixel, rgb).subscribe(
       (data) => {
+        this.selectedPixel.color = rgb;
         console.log(data);
       },
       (err) => {

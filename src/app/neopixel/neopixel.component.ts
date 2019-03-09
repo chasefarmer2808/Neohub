@@ -96,8 +96,25 @@ export class NeopixelComponent implements OnInit {
     return `rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`;
   }
 
-  fillNeopixel(id, color) {
-    for (let pixel of this.neopixels[id].pixels) {
+  clearNeopixel(neopixel: Neopixel) {
+    this.neopixelService.updatePixels(
+      neopixel._id,
+      0,
+      neopixel.pixels.length-1,
+      BLACK
+    ).subscribe(
+      (data) => {
+        console.log(data);
+        this.fillNeopixel(neopixel, BLACK);
+      },
+      (err) => {
+        console.error(err);
+      }
+    )
+  }
+
+  fillNeopixel(neopixel: Neopixel, color: number[]) {
+    for (let pixel of neopixel.pixels) {
       pixel.color = color;
     }
   }
