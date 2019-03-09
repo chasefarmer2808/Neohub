@@ -15,9 +15,14 @@ def release_neopixels():
 
 app = create_app('dev.cfg')
 
-app.route('/')
+@app.route('/')
 def home():
     return render_template('index.html')
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def redirect_home(path):
+    return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
