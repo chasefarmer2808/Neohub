@@ -9,7 +9,7 @@ export const NeopixelsMock: Neopixel[] = [
         brightness: 60,
         pixels: [
             {
-                neopixelId: 0,
+                neopixelId: '0',
                 index: 0,
                 color: [255, 255, 255]
             }

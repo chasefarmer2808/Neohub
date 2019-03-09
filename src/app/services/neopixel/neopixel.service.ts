@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 import { Neopixel } from './neopixel';
 import { Pixel } from './pixel';
@@ -14,6 +14,27 @@ import { environment } from '../../../environments/environment';
 export class NeopixelService {
 
   constructor(private http: HttpClient) { }
+
+  getNeopixels(): Observable<Neopixel[]> {
+    return this.http
+      .get<Neopixel[]>(`${environment.neopixelUrl}`)
+      .pipe(
+        map(neopixels => {
+          neopixels.map(neopixel => {
+            let i = 0;
+            neopixel.pixels.forEach(pixel => {
+              pixel.neopixelId = neopixel._id;
+              pixel.index = i;
+              i++;
+            })
+          })
+          return neopixels;
+        })
+      )
+      .pipe(
+        catchError(this.handleObservableError)
+      );
+  }
 
   createNeopixel(newNeoPixel: Neopixel): Observable<String> {
     let data = {
@@ -29,18 +50,18 @@ export class NeopixelService {
       );
   }
 
-  getNeopixels(): Observable<Neopixel[]> {
-    return this.http
-      .get<Neopixel[]>(`${environment.neopixelUrl}`)
-      .pipe(
-        catchError(this.handleObservableError)
-      );
-  }
-
   updatePixel(pixel: Pixel): Observable<any> {
-    console.log(pixel)
+    let data = {
+      _id: pixel.neopixelId,
+      index_start: pixel.index,
+      index_end: pixel.index,
+      r: pixel.color[0],
+      g: pixel.color[1],
+      b: pixel.color[2]
+    };
+
     return this.http
-      .put<any>(`http://192.168.0.106:5000/api/strip?id=${pixel.neopixelId}&index_start=${pixel.index}&index_end=${pixel.index}&r=${pixel.color[0]}&g=${pixel.color[1]}&b=${pixel.color[2]}`, {})
+      .put<any>(`${environment.neopixelUrl}`, data)
       .pipe(
         catchError(this.handleObservableError)
       );

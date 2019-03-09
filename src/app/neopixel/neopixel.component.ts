@@ -66,7 +66,7 @@ export class NeopixelComponent implements OnInit {
     const dialogRef = this.pixelColorDialog.open(PixelColorDialogComponent,
       { 
         data: {
-          pixelRef: this.neopixels[neopixelId].pixels[pixelIndex]
+          pixelRef: this.neopixels[neopixelId].pixels[pixelIndex],
         }
       });
   }
