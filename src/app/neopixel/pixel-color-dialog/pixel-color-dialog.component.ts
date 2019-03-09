@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Inject, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { NeopixelService } from 'src/app/services/neopixel/neopixel.service';
 import { Pixel } from 'src/app/services/neopixel/pixel';

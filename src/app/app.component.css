@@ -21,6 +21,7 @@
 .items-container-row {
     display: flex;
     flex-direction: row;
+    overflow-x: scroll;
 }
 
 .menu-action-text {
