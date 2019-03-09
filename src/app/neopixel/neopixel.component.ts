@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { SelectionModel } from '@angular/cdk/collections';
 
 import { AddNeopixelDialogComponent } from './add-neopixel-dialog/add-neopixel-dialog.component';
 import { PixelColorDialogComponent } from './pixel-color-dialog/pixel-color-dialog.component';
@@ -10,7 +11,7 @@ import { AnimationService } from '../services/animation/animation.service';
 import { NeopixelDataSource } from 'src/app/services/neopixel/neopixel-data-source';
 
 import { Neopixel } from 'src/app/services/neopixel/neopixel';
-import { BLACK } from '../services/neopixel/pixel';
+import { BLACK, Pixel } from '../services/neopixel/pixel';
 
 @Component({
   selector: 'app-neopixel',
@@ -21,12 +22,15 @@ export class NeopixelComponent implements OnInit {
 
   neopixels: Neopixel[];
   neopixelDataSource: NeopixelDataSource;
+  selectedPixels: SelectionModel<Pixel>;
   selectedAnimIndex: number = 0;
 
   constructor(private addNeopixelDialog: MatDialog,
               private pixelColorDialog: MatDialog, 
               private neopixelService: NeopixelService,
-              private animationService: AnimationService) { }
+              private animationService: AnimationService) {
+    this.selectedPixels = new SelectionModel<Pixel>(true, []);
+  }
 
   ngOnInit() {
     this.neopixelDataSource = new NeopixelDataSource(this.neopixelService);

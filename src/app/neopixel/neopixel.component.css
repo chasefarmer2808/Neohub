@@ -12,6 +12,9 @@
 }
 
 #pixel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 8px;
 }
 
@@ -47,4 +50,12 @@
 
 #animation-title {
     margin: 16px;
+}
+
+#pixel-icon {
+    color: black;
+}
+
+#pixel-select {
+    margin-top: 8px;
 }
