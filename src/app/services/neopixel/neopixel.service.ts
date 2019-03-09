@@ -53,8 +53,7 @@ export class NeopixelService {
   updatePixel(pixel: Pixel, color: number[]): Observable<any> {
     let data = {
       _id: pixel.neopixelId,
-      index_start: pixel.index,
-      index_end: pixel.index,
+      index: pixel.index,
       r: color[0],
       g: color[1],
       b: color[2]
