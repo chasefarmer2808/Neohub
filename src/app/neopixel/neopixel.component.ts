@@ -84,6 +84,12 @@ export class NeopixelComponent implements OnInit {
       });
   }
 
+  selectAll(index: number) {
+    this.neopixels[index].pixels.forEach(pixel => {
+      this.selectedPixels.select(pixel);
+    })
+  }
+
   deleteNeopixel(neopixel: Neopixel) {
     this.neopixelService.deleteNeopixel(neopixel._id).subscribe(
       (data) => {

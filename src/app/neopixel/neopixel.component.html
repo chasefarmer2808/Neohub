@@ -41,6 +41,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions *ngIf="selectMode" id="neopixel-bottom-actions">
+        <button mat-button (click)="selectAll(id)">Select All</button>
         <button mat-button [disabled]="selectedPixels.isEmpty()" (click)="openPixelColorDialogFromSelect()">Select Color</button>
       </mat-card-actions>
     </mat-card>
