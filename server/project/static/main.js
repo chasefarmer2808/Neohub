@@ -132,7 +132,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#app-container {\r\n    background-image: url('static/adafruit.png');\r\n    background-repeat: no-repeat;\r\n    background-attachment: fixed;\r\n    background-position: center;\r\n    background-color: #00a7e9;\r\n    width: 100vw;\r\n    height: 100vh;\r\n}\r\n\r\n.full-container {\r\n    width: 100vw;\r\n    height: 100vh;\r\n}\r\n\r\n.action-container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.items-container-row {\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.menu-action-text {\r\n    font-size: 18px;\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSw2Q0FBa0U7SUFDbEUsNkJBQTZCO0lBQzdCLDZCQUE2QjtJQUM3Qiw0QkFBNEI7SUFDNUIsMEJBQTBCO0lBQzFCLGFBQWE7SUFDYixjQUFjO0NBQ2pCOztBQUVEO0lBQ0ksYUFBYTtJQUNiLGNBQWM7Q0FDakI7O0FBRUQ7SUFDSSxjQUFjO0lBQ2Qsd0JBQXdCO0NBQzNCOztBQUVEO0lBQ0ksY0FBYztJQUNkLG9CQUFvQjtDQUN2Qjs7QUFFRDtJQUNJLGdCQUFnQjtDQUNuQiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2FwcC1jb250YWluZXIge1xyXG4gICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiLi4vLi4vc2VydmVyL3Byb2plY3Qvc3RhdGljL2FkYWZydWl0LnBuZ1wiKTtcclxuICAgIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XHJcbiAgICBiYWNrZ3JvdW5kLWF0dGFjaG1lbnQ6IGZpeGVkO1xyXG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzAwYTdlOTtcclxuICAgIHdpZHRoOiAxMDB2dztcclxuICAgIGhlaWdodDogMTAwdmg7XHJcbn1cclxuXHJcbi5mdWxsLWNvbnRhaW5lciB7XHJcbiAgICB3aWR0aDogMTAwdnc7XHJcbiAgICBoZWlnaHQ6IDEwMHZoO1xyXG59XHJcblxyXG4uYWN0aW9uLWNvbnRhaW5lciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbn1cclxuXHJcbi5pdGVtcy1jb250YWluZXItcm93IHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xyXG59XHJcblxyXG4ubWVudS1hY3Rpb24tdGV4dCB7XHJcbiAgICBmb250LXNpemU6IDE4cHg7XHJcbn1cclxuXHJcbiJdfQ== */"
+module.exports = "#app-container {\r\n    background-image: url('static/adafruit.png');\r\n    background-repeat: no-repeat;\r\n    background-attachment: fixed;\r\n    background-position: center;\r\n    background-color: #00a7e9;\r\n    width: 100vw;\r\n    height: 100vh;\r\n}\r\n\r\n.full-container {\r\n    width: 100vw;\r\n    height: 100vh;\r\n}\r\n\r\n.action-container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.items-container-row {\r\n    display: flex;\r\n    flex-direction: row;\r\n    overflow-x: scroll;\r\n    overflow-y: hidden;\r\n}\r\n\r\n.menu-action-text {\r\n    font-size: 18px;\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSw2Q0FBa0U7SUFDbEUsNkJBQTZCO0lBQzdCLDZCQUE2QjtJQUM3Qiw0QkFBNEI7SUFDNUIsMEJBQTBCO0lBQzFCLGFBQWE7SUFDYixjQUFjO0NBQ2pCOztBQUVEO0lBQ0ksYUFBYTtJQUNiLGNBQWM7Q0FDakI7O0FBRUQ7SUFDSSxjQUFjO0lBQ2Qsd0JBQXdCO0NBQzNCOztBQUVEO0lBQ0ksY0FBYztJQUNkLG9CQUFvQjtJQUNwQixtQkFBbUI7SUFDbkIsbUJBQW1CO0NBQ3RCOztBQUVEO0lBQ0ksZ0JBQWdCO0NBQ25CIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjYXBwLWNvbnRhaW5lciB7XHJcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuLi8uLi9zZXJ2ZXIvcHJvamVjdC9zdGF0aWMvYWRhZnJ1aXQucG5nXCIpO1xyXG4gICAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcclxuICAgIGJhY2tncm91bmQtYXR0YWNobWVudDogZml4ZWQ7XHJcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDBhN2U5O1xyXG4gICAgd2lkdGg6IDEwMHZ3O1xyXG4gICAgaGVpZ2h0OiAxMDB2aDtcclxufVxyXG5cclxuLmZ1bGwtY29udGFpbmVyIHtcclxuICAgIHdpZHRoOiAxMDB2dztcclxuICAgIGhlaWdodDogMTAwdmg7XHJcbn1cclxuXHJcbi5hY3Rpb24tY29udGFpbmVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxufVxyXG5cclxuLml0ZW1zLWNvbnRhaW5lci1yb3cge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XHJcbiAgICBvdmVyZmxvdy14OiBzY3JvbGw7XHJcbiAgICBvdmVyZmxvdy15OiBoaWRkZW47XHJcbn1cclxuXHJcbi5tZW51LWFjdGlvbi10ZXh0IHtcclxuICAgIGZvbnQtc2l6ZTogMThweDtcclxufVxyXG5cclxuIl19 */"
 
 /***/ }),
 
@@ -351,7 +351,8 @@ var MaterialModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatOptionModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatInputModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatCardModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatMenuModule"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatMenuModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatCheckboxModule"]
             ],
             exports: [
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatButtonModule"],
@@ -362,7 +363,8 @@ var MaterialModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatOptionModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatInputModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatCardModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatMenuModule"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatMenuModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatCheckboxModule"]
             ]
         })
     ], MaterialModule);
@@ -469,7 +471,7 @@ var AddNeopixelDialogComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#add-button {\r\n    width: 72px;\r\n    height: 72px;\r\n}\r\n\r\n#neopixels-container {\r\n    padding: 24px;\r\n}\r\n\r\n#neopixel-card {\r\n    margin-bottom: 24px;\r\n}\r\n\r\n#pixel-container {\r\n    margin: 8px;\r\n}\r\n\r\n#neopixel-card-header {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n#neopixel-actions {\r\n    position: absolute;\r\n    left:0;\r\n    top:0;\r\n}\r\n\r\n.neopixel-actions-container {\r\n    position: absolute;\r\n    right: 24px;\r\n    bottom: 24px;\r\n}\r\n\r\n.neopixel-action {\r\n    margin: 8px;\r\n}\r\n\r\n/deep/ .mat-menu-content {\r\n    background-color: #c2185b !important;\r\n}\r\n\r\n#delete-neopixel-action {\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n#animation-title {\r\n    margin: 16px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmVvcGl4ZWwvbmVvcGl4ZWwuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFlBQVk7SUFDWixhQUFhO0NBQ2hCOztBQUVEO0lBQ0ksY0FBYztDQUNqQjs7QUFFRDtJQUNJLG9CQUFvQjtDQUN2Qjs7QUFFRDtJQUNJLFlBQVk7Q0FDZjs7QUFFRDtJQUNJLGNBQWM7SUFDZCx3QkFBd0I7Q0FDM0I7O0FBRUQ7SUFDSSxtQkFBbUI7SUFDbkIsT0FBTztJQUNQLE1BQU07Q0FDVDs7QUFFRDtJQUNJLG1CQUFtQjtJQUNuQixZQUFZO0lBQ1osYUFBYTtDQUNoQjs7QUFFRDtJQUNJLFlBQVk7Q0FDZjs7QUFFRDtJQUNJLHFDQUFxQztDQUN4Qzs7QUFFRDtJQUNJLGNBQWM7SUFDZCxvQkFBb0I7Q0FDdkI7O0FBRUQ7SUFDSSxhQUFhO0NBQ2hCIiwiZmlsZSI6InNyYy9hcHAvbmVvcGl4ZWwvbmVvcGl4ZWwuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIiNhZGQtYnV0dG9uIHtcclxuICAgIHdpZHRoOiA3MnB4O1xyXG4gICAgaGVpZ2h0OiA3MnB4O1xyXG59XHJcblxyXG4jbmVvcGl4ZWxzLWNvbnRhaW5lciB7XHJcbiAgICBwYWRkaW5nOiAyNHB4O1xyXG59XHJcblxyXG4jbmVvcGl4ZWwtY2FyZCB7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAyNHB4O1xyXG59XHJcblxyXG4jcGl4ZWwtY29udGFpbmVyIHtcclxuICAgIG1hcmdpbjogOHB4O1xyXG59XHJcblxyXG4jbmVvcGl4ZWwtY2FyZC1oZWFkZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG59XHJcblxyXG4jbmVvcGl4ZWwtYWN0aW9ucyB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBsZWZ0OjA7XHJcbiAgICB0b3A6MDtcclxufVxyXG5cclxuLm5lb3BpeGVsLWFjdGlvbnMtY29udGFpbmVyIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHJpZ2h0OiAyNHB4O1xyXG4gICAgYm90dG9tOiAyNHB4O1xyXG59XHJcblxyXG4ubmVvcGl4ZWwtYWN0aW9uIHtcclxuICAgIG1hcmdpbjogOHB4O1xyXG59XHJcblxyXG4vZGVlcC8gLm1hdC1tZW51LWNvbnRlbnQge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2MyMTg1YiAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4jZGVsZXRlLW5lb3BpeGVsLWFjdGlvbiB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxufVxyXG5cclxuI2FuaW1hdGlvbi10aXRsZSB7XHJcbiAgICBtYXJnaW46IDE2cHg7XHJcbn0iXX0= */"
+module.exports = "#add-button {\r\n    width: 72px;\r\n    height: 72px;\r\n}\r\n\r\n#neopixels-container {\r\n    padding: 24px;\r\n}\r\n\r\n#neopixel-card {\r\n    margin-bottom: 24px;\r\n}\r\n\r\n#pixel-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    margin: 8px;\r\n}\r\n\r\n#neopixel-card-header {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n#neopixel-actions {\r\n    position: absolute;\r\n    left:0;\r\n    top:0;\r\n}\r\n\r\n.neopixel-actions-container {\r\n    position: absolute;\r\n    right: 24px;\r\n    bottom: 24px;\r\n}\r\n\r\n.neopixel-action {\r\n    margin: 8px;\r\n}\r\n\r\n/deep/ .mat-menu-content {\r\n    background-color: #c2185b !important;\r\n}\r\n\r\n#delete-neopixel-action {\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n#animation-title {\r\n    margin: 16px;\r\n}\r\n\r\n#pixel-icon {\r\n    color: black;\r\n}\r\n\r\n#pixel-select {\r\n    margin-top: 8px;\r\n}\r\n\r\n#neopixel-bottom-actions {\r\n    text-align: center;    \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmVvcGl4ZWwvbmVvcGl4ZWwuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLFlBQVk7SUFDWixhQUFhO0NBQ2hCOztBQUVEO0lBQ0ksY0FBYztDQUNqQjs7QUFFRDtJQUNJLG9CQUFvQjtDQUN2Qjs7QUFFRDtJQUNJLGNBQWM7SUFDZCx1QkFBdUI7SUFDdkIsb0JBQW9CO0lBQ3BCLFlBQVk7Q0FDZjs7QUFFRDtJQUNJLGNBQWM7SUFDZCx3QkFBd0I7Q0FDM0I7O0FBRUQ7SUFDSSxtQkFBbUI7SUFDbkIsT0FBTztJQUNQLE1BQU07Q0FDVDs7QUFFRDtJQUNJLG1CQUFtQjtJQUNuQixZQUFZO0lBQ1osYUFBYTtDQUNoQjs7QUFFRDtJQUNJLFlBQVk7Q0FDZjs7QUFFRDtJQUNJLHFDQUFxQztDQUN4Qzs7QUFFRDtJQUNJLGNBQWM7SUFDZCxvQkFBb0I7Q0FDdkI7O0FBRUQ7SUFDSSxhQUFhO0NBQ2hCOztBQUVEO0lBQ0ksYUFBYTtDQUNoQjs7QUFFRDtJQUNJLGdCQUFnQjtDQUNuQjs7QUFFRDtJQUNJLG1CQUFtQjtDQUN0QiIsImZpbGUiOiJzcmMvYXBwL25lb3BpeGVsL25lb3BpeGVsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjYWRkLWJ1dHRvbiB7XHJcbiAgICB3aWR0aDogNzJweDtcclxuICAgIGhlaWdodDogNzJweDtcclxufVxyXG5cclxuI25lb3BpeGVscy1jb250YWluZXIge1xyXG4gICAgcGFkZGluZzogMjRweDtcclxufVxyXG5cclxuI25lb3BpeGVsLWNhcmQge1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMjRweDtcclxufVxyXG5cclxuI3BpeGVsLWNvbnRhaW5lciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBtYXJnaW46IDhweDtcclxufVxyXG5cclxuI25lb3BpeGVsLWNhcmQtaGVhZGVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxufVxyXG5cclxuI25lb3BpeGVsLWFjdGlvbnMge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgbGVmdDowO1xyXG4gICAgdG9wOjA7XHJcbn1cclxuXHJcbi5uZW9waXhlbC1hY3Rpb25zLWNvbnRhaW5lciB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICByaWdodDogMjRweDtcclxuICAgIGJvdHRvbTogMjRweDtcclxufVxyXG5cclxuLm5lb3BpeGVsLWFjdGlvbiB7XHJcbiAgICBtYXJnaW46IDhweDtcclxufVxyXG5cclxuL2RlZXAvIC5tYXQtbWVudS1jb250ZW50IHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNjMjE4NWIgIWltcG9ydGFudDtcclxufVxyXG5cclxuI2RlbGV0ZS1uZW9waXhlbC1hY3Rpb24ge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbn1cclxuXHJcbiNhbmltYXRpb24tdGl0bGUge1xyXG4gICAgbWFyZ2luOiAxNnB4O1xyXG59XHJcblxyXG4jcGl4ZWwtaWNvbiB7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbn1cclxuXHJcbiNwaXhlbC1zZWxlY3Qge1xyXG4gICAgbWFyZ2luLXRvcDogOHB4O1xyXG59XHJcblxyXG4jbmVvcGl4ZWwtYm90dG9tLWFjdGlvbnMge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyOyAgICBcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -480,7 +482,7 @@ module.exports = "#add-button {\r\n    width: 72px;\r\n    height: 72px;\r\n}\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"component-container full-container\">\r\n  <div class=\"items-container\" id=\"neopixels-container\">\r\n    <mat-card class=\"card-container\" id=\"neopixel-card\" *ngFor=\"let neopixel of neopixels; let id = index\">\r\n      <mat-card-header id=\"neopixel-card-header\">\r\n        <div id=\"neopixel-actions\">\r\n          <button mat-icon-button [matMenuTriggerFor]=\"menu\">\r\n            <mat-icon>more_vert</mat-icon>\r\n          </button>\r\n          <mat-menu class=\"action-menu\" #menu=\"matMenu\" xPosition=\"before\">\r\n            <button id=\"clear-neopixel-action\" (click)=\"clearNeopixel(neopixel)\" mat-menu-item>\r\n              <mat-icon>clear_all</mat-icon>\r\n              <span class=\"menu-action-text\">Clear</span>\r\n            </button>\r\n            <button id=\"delete-neopixel-action\" (click)=\"deleteNeopixel(neopixel)\" mat-menu-item>\r\n              <mat-icon>delete</mat-icon>\r\n              <span class=\"menu-action-text\">Delete</span>\r\n            </button>\r\n          </mat-menu>\r\n        </div>\r\n        <mat-card-title>{{neopixel._id}}</mat-card-title>\r\n      </mat-card-header>\r\n      <mat-card-content>\r\n        <div class=\"items-container items-container-row\">\r\n          <div id=\"pixel-container\" *ngFor=\"let pixel of neopixel.pixels; let index = index\">\r\n            <button [ngStyle]=\"{'background-color': decimalArrayToRGB(pixel.color)}\" (click)=\"openPixelColorDialog(id, index)\" id=\"pixel\" mat-fab>\r\n              <mat-icon>color_lens</mat-icon>\r\n            </button>\r\n          </div>\r\n        </div>\r\n        <div class=\"items-container\" id=\"animations-container\">\r\n          <mat-card class=\"card-container\" id=\"animation-container\" *ngFor=\"let anim of neopixel.animations; let index = index\">\r\n            <mat-card-content>\r\n                <button id=\"play-pause-button\" (click)=\"toggleAnimation(neopixel.id, anim, index)\" mat-fab color=\"primary\">\r\n                  <mat-icon *ngIf=\"!(selectedAnimIndex == index) || !neopixel.animating\">play_arrow</mat-icon>\r\n                  <mat-icon *ngIf=\"selectedAnimIndex == index && neopixel.animating\">pause</mat-icon>\r\n                </button>\r\n                <span id=\"animation-title\">{{anim}}</span>\r\n            </mat-card-content>\r\n          </mat-card>\r\n        </div>\r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n  <div class=\"neopixel-actions-container\">\r\n    <button class=\"neopixel-action\" (click)=\"openAddNeopixelDialog()\" id=\"add-button\" mat-fab color=\"primary\">\r\n      <mat-icon>add</mat-icon>\r\n    </button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"component-container full-container\">\r\n  <div class=\"items-container\" id=\"neopixels-container\">\r\n    <mat-card class=\"card-container\" id=\"neopixel-card\" *ngFor=\"let neopixel of neopixels; let id = index\">\r\n      <mat-card-header id=\"neopixel-card-header\">\r\n        <div id=\"neopixel-actions\">\r\n          <button mat-icon-button [matMenuTriggerFor]=\"menu\">\r\n            <mat-icon>more_vert</mat-icon>\r\n          </button>\r\n          <mat-menu class=\"action-menu\" #menu=\"matMenu\" xPosition=\"before\">\r\n            <button id=\"select-neopixel-action\" (click)=\"selectMode = !selectMode\" mat-menu-item>\r\n              <mat-icon>check_box</mat-icon>\r\n              <span class=\"menu-action-text\">Select</span>\r\n            </button>\r\n            <button id=\"clear-neopixel-action\" (click)=\"clearNeopixel(neopixel)\" mat-menu-item>\r\n              <mat-icon>clear_all</mat-icon>\r\n              <span class=\"menu-action-text\">Clear</span>\r\n            </button>\r\n            <button id=\"delete-neopixel-action\" (click)=\"deleteNeopixel(neopixel)\" mat-menu-item>\r\n              <mat-icon>delete</mat-icon>\r\n              <span class=\"menu-action-text\">Delete</span>\r\n            </button>\r\n          </mat-menu>\r\n        </div>\r\n        <mat-card-title>{{neopixel._id}}</mat-card-title>\r\n      </mat-card-header>\r\n      <mat-card-content>\r\n        <div class=\"items-container items-container-row\">\r\n          <div id=\"pixel-container\" *ngFor=\"let pixel of neopixel.pixels; let index = index\">\r\n            <span *ngIf=\"selectMode\">{{index+1}}</span>\r\n            <button [ngStyle]=\"{'background-color': decimalArrayToRGB(pixel.color)}\" (click)=\"openPixelColorDialogFromPixel(pixel)\" id=\"pixel\" mat-fab>\r\n              <mat-icon id=\"pixel-icon\">flare</mat-icon>\r\n            </button>\r\n            <div id=\"pixel-select\" *ngIf=\"selectMode\">\r\n              <mat-checkbox \r\n                (click)=\"$event.stopPropagation()\"\r\n                (change)=\"$event ? selectedPixels.toggle(pixel) : null\"\r\n                [checked]=\"selectedPixels.isSelected(pixel)\">\r\n              </mat-checkbox>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </mat-card-content>\r\n      <mat-card-actions *ngIf=\"selectMode\" id=\"neopixel-bottom-actions\">\r\n        <button mat-button (click)=\"selectAll(id)\">Select All</button>\r\n        <button mat-button [disabled]=\"selectedPixels.isEmpty()\" (click)=\"openPixelColorDialogFromSelect()\">Select Color</button>\r\n      </mat-card-actions>\r\n    </mat-card>\r\n  </div>\r\n  <div class=\"neopixel-actions-container\">\r\n    <button class=\"neopixel-action\" (click)=\"openAddNeopixelDialog()\" id=\"add-button\" mat-fab color=\"primary\">\r\n      <mat-icon>add</mat-icon>\r\n    </button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -497,12 +499,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _add_neopixel_dialog_add_neopixel_dialog_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./add-neopixel-dialog/add-neopixel-dialog.component */ "./src/app/neopixel/add-neopixel-dialog/add-neopixel-dialog.component.ts");
-/* harmony import */ var _pixel_color_dialog_pixel_color_dialog_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pixel-color-dialog/pixel-color-dialog.component */ "./src/app/neopixel/pixel-color-dialog/pixel-color-dialog.component.ts");
-/* harmony import */ var src_app_services_neopixel_neopixel_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/neopixel/neopixel.service */ "./src/app/services/neopixel/neopixel.service.ts");
-/* harmony import */ var _services_animation_animation_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/animation/animation.service */ "./src/app/services/animation/animation.service.ts");
-/* harmony import */ var src_app_services_neopixel_neopixel_data_source__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/neopixel/neopixel-data-source */ "./src/app/services/neopixel/neopixel-data-source.ts");
-/* harmony import */ var _services_neopixel_pixel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../services/neopixel/pixel */ "./src/app/services/neopixel/pixel.ts");
+/* harmony import */ var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/cdk/collections */ "./node_modules/@angular/cdk/esm5/collections.es5.js");
+/* harmony import */ var _add_neopixel_dialog_add_neopixel_dialog_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./add-neopixel-dialog/add-neopixel-dialog.component */ "./src/app/neopixel/add-neopixel-dialog/add-neopixel-dialog.component.ts");
+/* harmony import */ var _pixel_color_dialog_pixel_color_dialog_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pixel-color-dialog/pixel-color-dialog.component */ "./src/app/neopixel/pixel-color-dialog/pixel-color-dialog.component.ts");
+/* harmony import */ var src_app_services_neopixel_neopixel_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/neopixel/neopixel.service */ "./src/app/services/neopixel/neopixel.service.ts");
+/* harmony import */ var _services_animation_animation_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/animation/animation.service */ "./src/app/services/animation/animation.service.ts");
+/* harmony import */ var src_app_services_neopixel_neopixel_data_source__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/services/neopixel/neopixel-data-source */ "./src/app/services/neopixel/neopixel-data-source.ts");
+/* harmony import */ var _services_neopixel_pixel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../services/neopixel/pixel */ "./src/app/services/neopixel/pixel.ts");
+
 
 
 
@@ -518,11 +522,13 @@ var NeopixelComponent = /** @class */ (function () {
         this.pixelColorDialog = pixelColorDialog;
         this.neopixelService = neopixelService;
         this.animationService = animationService;
+        this.selectMode = false;
         this.selectedAnimIndex = 0;
+        this.selectedPixels = new _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_3__["SelectionModel"](true, []);
     }
     NeopixelComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.neopixelDataSource = new src_app_services_neopixel_neopixel_data_source__WEBPACK_IMPORTED_MODULE_7__["NeopixelDataSource"](this.neopixelService);
+        this.neopixelDataSource = new src_app_services_neopixel_neopixel_data_source__WEBPACK_IMPORTED_MODULE_8__["NeopixelDataSource"](this.neopixelService);
         this.neopixelDataSource.connect().subscribe(function (neopixels) {
             _this.neopixels = neopixels;
             console.log(_this.neopixels);
@@ -541,16 +547,28 @@ var NeopixelComponent = /** @class */ (function () {
     };
     NeopixelComponent.prototype.openAddNeopixelDialog = function () {
         var _this = this;
-        var dialogRef = this.addNeopixelDialog.open(_add_neopixel_dialog_add_neopixel_dialog_component__WEBPACK_IMPORTED_MODULE_3__["AddNeopixelDialogComponent"]);
+        var dialogRef = this.addNeopixelDialog.open(_add_neopixel_dialog_add_neopixel_dialog_component__WEBPACK_IMPORTED_MODULE_4__["AddNeopixelDialogComponent"]);
         dialogRef.afterClosed().subscribe(function (data) {
             _this.neopixelDataSource.loadNeopixels();
         });
     };
-    NeopixelComponent.prototype.openPixelColorDialog = function (neopixelId, pixelIndex) {
-        var dialogRef = this.pixelColorDialog.open(_pixel_color_dialog_pixel_color_dialog_component__WEBPACK_IMPORTED_MODULE_4__["PixelColorDialogComponent"], {
+    NeopixelComponent.prototype.openPixelColorDialogFromPixel = function (pixel) {
+        this.openPixelColorDialog([pixel]);
+    };
+    NeopixelComponent.prototype.openPixelColorDialogFromSelect = function () {
+        this.openPixelColorDialog(this.selectedPixels.selected);
+    };
+    NeopixelComponent.prototype.openPixelColorDialog = function (pixels) {
+        var dialogRef = this.pixelColorDialog.open(_pixel_color_dialog_pixel_color_dialog_component__WEBPACK_IMPORTED_MODULE_5__["PixelColorDialogComponent"], {
             data: {
-                pixelRef: this.neopixels[neopixelId].pixels[pixelIndex],
+                pixels: pixels,
             }
+        });
+    };
+    NeopixelComponent.prototype.selectAll = function (index) {
+        var _this = this;
+        this.neopixels[index].pixels.forEach(function (pixel) {
+            _this.selectedPixels.select(pixel);
         });
     };
     NeopixelComponent.prototype.deleteNeopixel = function (neopixel) {
@@ -574,9 +592,9 @@ var NeopixelComponent = /** @class */ (function () {
     };
     NeopixelComponent.prototype.clearNeopixel = function (neopixel) {
         var _this = this;
-        this.neopixelService.updatePixels(neopixel._id, 0, neopixel.pixels.length - 1, _services_neopixel_pixel__WEBPACK_IMPORTED_MODULE_8__["BLACK"]).subscribe(function (data) {
+        this.neopixelService.updatePixels(neopixel.pixels, _services_neopixel_pixel__WEBPACK_IMPORTED_MODULE_9__["BLACK"]).subscribe(function (data) {
             console.log(data);
-            _this.fillNeopixel(neopixel, _services_neopixel_pixel__WEBPACK_IMPORTED_MODULE_8__["BLACK"]);
+            _this.fillNeopixel(neopixel, _services_neopixel_pixel__WEBPACK_IMPORTED_MODULE_9__["BLACK"]);
         }, function (err) {
             console.error(err);
         });
@@ -587,6 +605,9 @@ var NeopixelComponent = /** @class */ (function () {
             pixel.color = color;
         }
     };
+    NeopixelComponent.prototype.printSelected = function () {
+        console.log(this.selectedPixels);
+    };
     NeopixelComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-neopixel',
@@ -595,8 +616,8 @@ var NeopixelComponent = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"],
             _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"],
-            src_app_services_neopixel_neopixel_service__WEBPACK_IMPORTED_MODULE_5__["NeopixelService"],
-            _services_animation_animation_service__WEBPACK_IMPORTED_MODULE_6__["AnimationService"]])
+            src_app_services_neopixel_neopixel_service__WEBPACK_IMPORTED_MODULE_6__["NeopixelService"],
+            _services_animation_animation_service__WEBPACK_IMPORTED_MODULE_7__["AnimationService"]])
     ], NeopixelComponent);
     return NeopixelComponent;
 }());
@@ -623,7 +644,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"dialog-container\" id=\"color-picker-container\">\r\n  <span \r\n    [cpToggle]=\"true\"\r\n    [cpDialogDisplay]=\"'inline'\"\r\n    [cpOKButton]=\"true\"\r\n    [cpOKButtonClass]=\"'mat-raised-button'\"\r\n    [cpCancelButton]=\"true\"\r\n    [cpCancelButtonClass]=\"'mat-raised-button'\"\r\n    [cpAlphaChannel]=\"'disabled'\"\r\n    [cpOutputFormat]=\"'rgba'\"\r\n    [(colorPicker)]=\"color\"\r\n    (colorPickerSelect)=\"updatePixel($event)\">\r\n  </span>\r\n</div>\r\n"
+module.exports = "<div class=\"dialog-container\" id=\"color-picker-container\">\r\n  <span \r\n    [cpToggle]=\"true\"\r\n    [cpDialogDisplay]=\"'inline'\"\r\n    [cpOKButton]=\"true\"\r\n    [cpOKButtonClass]=\"'mat-raised-button'\"\r\n    [cpCancelButton]=\"true\"\r\n    [cpCancelButtonClass]=\"'mat-raised-button'\"\r\n    [cpAlphaChannel]=\"'disabled'\"\r\n    [cpOutputFormat]=\"'rgba'\"\r\n    [cpDisableInput]=\"true\"\r\n    [(colorPicker)]=\"color\"\r\n    (colorPickerSelect)=\"updatePixel($event)\">\r\n  </span>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -641,6 +662,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var src_app_services_neopixel_neopixel_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/neopixel/neopixel.service */ "./src/app/services/neopixel/neopixel.service.ts");
+/* harmony import */ var src_app_services_neopixel_pixel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/neopixel/pixel */ "./src/app/services/neopixel/pixel.ts");
+
 
 
 
@@ -652,14 +675,21 @@ var PixelColorDialogComponent = /** @class */ (function () {
     }
     PixelColorDialogComponent.prototype.ngOnInit = function () {
         console.log('DATA: ', this.data);
-        this.selectedPixel = this.data.pixelRef;
-        this.color = this.decimalArrayToRGB(this.selectedPixel.color);
+        this.selectedPixels = this.data.pixels;
+        if (this.selectedPixels.length == 1) {
+            this.color = this.decimalArrayToRGB(this.selectedPixels[0].color);
+        }
+        else {
+            this.color = this.decimalArrayToRGB(src_app_services_neopixel_pixel__WEBPACK_IMPORTED_MODULE_4__["BLACK"]);
+        }
     };
     PixelColorDialogComponent.prototype.updatePixel = function (evt) {
         var _this = this;
         var rgb = this.rgbToDecimalArray(evt);
-        this.neoPixelService.updatePixel(this.selectedPixel, rgb).subscribe(function (data) {
-            _this.selectedPixel.color = rgb;
+        this.neoPixelService.updatePixels(this.selectedPixels, rgb).subscribe(function (data) {
+            _this.selectedPixels.forEach(function (pixel) {
+                pixel.color = rgb;
+            });
             console.log(data);
         }, function (err) {
             console.error(err);
@@ -837,24 +867,25 @@ var NeopixelService = /** @class */ (function () {
             .post("" + _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].neopixelUrl, data)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleObservableError));
     };
+    NeopixelService.prototype.updatePixels = function (pixels, color) {
+        var _this = this;
+        var requests = [];
+        pixels.forEach(function (pixel) {
+            var data = {
+                _id: pixel.neopixelId,
+                index: pixel.index,
+                r: color[0],
+                g: color[1],
+                b: color[2]
+            };
+            requests.push(_this.updatePixel(pixel, color));
+        });
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["forkJoin"])(requests);
+    };
     NeopixelService.prototype.updatePixel = function (pixel, color) {
         var data = {
             _id: pixel.neopixelId,
-            index_start: pixel.index,
-            index_end: pixel.index,
-            r: color[0],
-            g: color[1],
-            b: color[2]
-        };
-        return this.http
-            .put("" + _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].neopixelUrl, data)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleObservableError));
-    };
-    NeopixelService.prototype.updatePixels = function (neopixelId, indexStart, indexEnd, color) {
-        var data = {
-            _id: neopixelId,
-            index_start: indexStart,
-            index_end: indexEnd,
+            index: pixel.index,
             r: color[0],
             g: color[1],
             b: color[2]
