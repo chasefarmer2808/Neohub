@@ -27,7 +27,7 @@
         <div class="items-container items-container-row">
           <div id="pixel-container" *ngFor="let pixel of neopixel.pixels; let index = index">
             <span *ngIf="selectMode">{{index+1}}</span>
-            <button [ngStyle]="{'background-color': decimalArrayToRGB(pixel.color)}" (click)="openPixelColorDialog(id, index)" id="pixel" mat-fab>
+            <button [ngStyle]="{'background-color': decimalArrayToRGB(pixel.color)}" (click)="openPixelColorDialogFromPixel(pixel)" id="pixel" mat-fab>
               <mat-icon id="pixel-icon">flare</mat-icon>
             </button>
             <div id="pixel-select" *ngIf="selectMode">
@@ -39,18 +39,10 @@
             </div>
           </div>
         </div>
-        <div class="items-container" id="animations-container">
-          <mat-card class="card-container" id="animation-container" *ngFor="let anim of neopixel.animations; let index = index">
-            <mat-card-content>
-                <button id="play-pause-button" (click)="toggleAnimation(neopixel.id, anim, index)" mat-fab color="primary">
-                  <mat-icon *ngIf="!(selectedAnimIndex == index) || !neopixel.animating">play_arrow</mat-icon>
-                  <mat-icon *ngIf="selectedAnimIndex == index && neopixel.animating">pause</mat-icon>
-                </button>
-                <span id="animation-title">{{anim}}</span>
-            </mat-card-content>
-          </mat-card>
-        </div>
       </mat-card-content>
+      <mat-card-actions *ngIf="selectMode" id="neopixel-bottom-actions">
+        <button mat-button [disabled]="selectedPixels.isEmpty()" (click)="openPixelColorDialogFromSelect()">Select Color</button>
+      </mat-card-actions>
     </mat-card>
   </div>
   <div class="neopixel-actions-container">

@@ -67,11 +67,19 @@ export class NeopixelComponent implements OnInit {
     )
   }
 
-  openPixelColorDialog(neopixelId: number, pixelIndex: number) {
+  openPixelColorDialogFromPixel(pixel: Pixel) {
+    this.openPixelColorDialog([pixel]);
+  }
+
+  openPixelColorDialogFromSelect() {
+    this.openPixelColorDialog(this.selectedPixels.selected);
+  }
+
+  openPixelColorDialog(pixels: Pixel[]) {
     const dialogRef = this.pixelColorDialog.open(PixelColorDialogComponent,
       { 
         data: {
-          pixelRef: this.neopixels[neopixelId].pixels[pixelIndex],
+          pixels: pixels,
         }
       });
   }
@@ -103,9 +111,7 @@ export class NeopixelComponent implements OnInit {
 
   clearNeopixel(neopixel: Neopixel) {
     this.neopixelService.updatePixels(
-      neopixel._id,
-      0,
-      neopixel.pixels.length-1,
+      neopixel.pixels,
       BLACK
     ).subscribe(
       (data) => {

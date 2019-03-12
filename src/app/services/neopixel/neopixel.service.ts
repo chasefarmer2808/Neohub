@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, forkJoin } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { Neopixel } from './neopixel';
@@ -50,27 +50,28 @@ export class NeopixelService {
       );
   }
 
-  updatePixel(pixel: Pixel, color: number[]): Observable<any> {
+  updatePixels(pixels: Pixel[], color: number[]): Observable<any> {
+    let requests: Array<Observable<any>> = [];
+
+    pixels.forEach(pixel => {
+      let data = {
+        _id: pixel.neopixelId,
+        index: pixel.index,
+        r: color[0],
+        g: color[1],
+        b: color[2]
+      };
+
+      requests.push(this.updatePixel(pixel, color));
+    });
+
+    return forkJoin(requests);
+  }
+
+  updatePixel(pixel: Pixel, color: number[]) {
     let data = {
       _id: pixel.neopixelId,
       index: pixel.index,
-      r: color[0],
-      g: color[1],
-      b: color[2]
-    };
-
-    return this.http
-      .put<any>(`${environment.neopixelUrl}`, data)
-      .pipe(
-        catchError(this.handleObservableError)
-      );
-  }
-
-  updatePixels(neopixelId: string, indexStart: number, indexEnd: number, color: number[]) {
-    let data = {
-      _id: neopixelId,
-      index_start: indexStart,
-      index_end: indexEnd,
       r: color[0],
       g: color[1],
       b: color[2]
